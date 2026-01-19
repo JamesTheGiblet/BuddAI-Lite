@@ -44,3 +44,127 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ## Development Setup
 
 ```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/fluffy-cool-chatbot.git
+cd fluffy-cool-chatbot
+
+# Create a branch
+git checkout -b feature/my-new-feature
+
+# Make changes and test by opening chatbot.html in browser
+
+# Commit
+git commit -m "Add amazing feature"
+
+# Push
+git push origin feature/my-new-feature
+```
+
+## Code Style
+
+### JavaScript
+
+- Use ES6+ features
+- Use descriptive variable names
+- Comment complex logic
+- Keep functions focused and small
+- Avoid global variables when possible
+
+### CSS
+
+- Use consistent naming conventions
+- Group related styles
+- Comment major sections
+- Mobile-first responsive design
+
+### JSON
+
+- Use 2-space indentation
+- Keep response arrays organized
+- Add comments where helpful (in documentation)
+
+## Adding New Features
+
+### Adding New Domain Knowledge
+
+Edit `technicalKnowledge` object in `chatbot.html`:
+
+```javascript
+const technicalKnowledge = {
+    yourNewDomain: {
+        topics: ["Topic 1", "Topic 2"],
+        tools: ["Tool 1", "Tool 2"],
+        // ... more categories
+    }
+};
+```
+
+### Adding Custom Responses
+
+Edit `training-data.json`:
+
+```json
+{
+  "customResponses": {
+    "fluffy": {
+      "new keyword": ["Response 1", "Response 2"]
+    },
+    "coolboy": {
+      "new keyword": ["Response 1", "Response 2"]
+    }
+  }
+}
+```
+
+### Adding New UI Components
+
+1. Add HTML structure in appropriate section
+2. Add CSS styling with clear class names
+3. Add JavaScript functionality
+4. Test across browsers
+5. Ensure mobile responsiveness
+
+## Testing
+
+Before submitting:
+
+1. **Test in multiple browsers** (Chrome, Firefox, Safari, Edge)
+2. **Test on mobile** devices
+3. **Test voice features** (if modified)
+4. **Test localStorage** persistence
+5. **Test export features**
+6. **Verify no console errors**
+
+## Documentation
+
+When adding features:
+
+- Update README.md
+- Add usage examples
+- Update FAQ if applicable
+- Comment your code
+- Update roadmap if it's a planned feature
+
+## Community
+
+- Be respectful and constructive
+- Follow the [Code of Conduct](CODE_OF_CONDUCT.md)
+- Help others in discussions
+- Share your improvements
+
+## Recognition
+
+Contributors will be added to CONTRIBUTORS.md. Major contributors may be highlighted in README.md.
+
+## Questions?
+
+Feel free to open an issue with your question or reach out via:
+
+- GitHub Discussions
+- Email: <your.email@example.com>
+
+---
+
+**Thank you for contributing! 🙏**
+
+Made with 💖 by the community
