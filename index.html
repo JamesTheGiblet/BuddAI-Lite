@@ -56,7 +56,8 @@
         }
 
         .bot-avatar {
-            font-size: 80px;
+            font-size: 70px;
+            margin-top: 60px;
             animation: bounce 2s infinite;
             display: inline-block;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
@@ -102,9 +103,11 @@
             display: flex;
             gap: 10px;
             cursor: pointer;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .mode-switcher:hover {
@@ -152,12 +155,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
             cursor: pointer;
             max-width: 200px;
             overflow: hidden;
+            z-index: 10;
         }
 
         .preference-indicator:hover {
@@ -196,6 +201,7 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
@@ -282,8 +288,8 @@
         }
 
         .message.bot .message-bubble {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            color: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
             border-bottom-left-radius: 5px;
             border: 2px solid #3498db;
         }
@@ -1239,6 +1245,7 @@
             <div class="project-actions">
                 <button class="project-btn primary" onclick="addNewProject()">➕ New Project</button>
                 <button class="project-btn secondary" onclick="generateProjectIdeas()">💡 Get Ideas</button>
+                <button class="project-btn secondary" onclick="exportProjects()">💾 Export</button>
             </div>
             
             <div class="project-suggestions" id="projectSuggestions">
@@ -1573,6 +1580,63 @@
                 showStatus('🧠 Training data loaded! Custom responses active!');
             } catch (error) {
                 console.log('ℹ️ No training data found - using default responses');
+                // Fallback for local file execution (CORS block)
+                trainingData = {
+                    "customResponses": {
+                        "fluffy": {
+                            "gilbot": [
+                                "GilBot! 🤖 Your combat robot is so cool! How's the weapon system coming along? ⚔️",
+                                "I love hearing about GilBot! 💕 What weight class is it competing in? 🏆"
+                            ],
+                            "buddai": [
+                                "BuddAI sounds amazing! 🧠 AI code assistants are the future! How's the validation testing? ✨",
+                                "Your BuddAI project is so innovative! 💖 Creating symbiotic AI partnerships is beautiful! 🌟"
+                            ],
+                            "taami": [
+                                "Taami sounds wonderful! 💕 It's so sweet that you work together on projects! 🌸"
+                            ],
+                            "giblets": [
+                                "Giblets Creations! 🎨 What a creative name! Your company sounds so innovative! ✨"
+                            ],
+                            "forge theory": [
+                                "Forge Theory sounds fascinating! 🧪 Exponential decay patterns across multiple domains? Brilliant! 💡"
+                            ],
+                            "chatter": [
+                                "CHATTER project! 🗣️ ESP32 devices developing emergent language? Mind-blowing! 🤯"
+                            ],
+                            "sidewinder": [
+                                "Artillery Sidewinder X2! 🖨️ Such a solid 3D printer! What upgrades are you doing? 🔧"
+                            ]
+                        },
+                        "coolboy": {
+                            "gilbot": [
+                                "GilBot is sick! ⚙️ What weapon system you running? Spinner or flipper? 🔥",
+                                "Combat robotics FTW! 🤖 GilBot specs? Motor choice? Weapon design? Spill it! 💪"
+                            ],
+                            "buddai": [
+                                "BuddAI architecture sounds dope! 🧠 Modular design with 10 specialized modules? Pro move! 🚀",
+                                "Building AI code assistants is next level! 💻 What's your accuracy rate now? 92%+? 📈"
+                            ],
+                            "taami": [
+                                "Shoutout to Taami! 👊 Having a solid partner makes the grind easier! 💪"
+                            ],
+                            "giblets": [
+                                "Giblets Creations! 🏢 Building your own tech empire? Respect! 🔥"
+                            ],
+                            "forge theory": [
+                                "Forge Theory! 🧮 Exponential decay framework validated across multiple domains? That's research-level! 🔬"
+                            ],
+                            "chatter": [
+                                "CHATTER on ESP32-C3? 🎙️ Emergent language development? That's cutting-edge AI research! 🧠"
+                            ],
+                            "sidewinder": [
+                                "Artillery Sidewinder X2 modifications! 🖨️ Custom firmware? That's printer mastery! 💪"
+                            ]
+                        }
+                    }
+                };
+                console.log('⚠️ Loaded embedded fallback data (Local file mode detected)');
+                showStatus('🧠 Loaded embedded training data!');
             }
         }
 
@@ -1815,11 +1879,13 @@
         function detectAndTrackProjects(input, topic) {
             const lower = input.toLowerCase();
             
+            // Improved patterns to handle "called X", "the X project", etc.
             const projectPatterns = [
-                { pattern: /\b(building|making|creating|designing)\s+(?:a\s+|an\s+|my\s+)?(\w[\w\s]{2,}?)\b/i, type: 'building' },
-                { pattern: /\b(working on|developing|coding)\s+(?:a\s+|my\s+)?(\w[\w\s]{2,}?)\b/i, type: 'development' },
-                { pattern: /\b(my\s+project\s+is|i'm\s+building|i\s+built)\s+(\w[\w\s]{2,}?)(?:\s+project)?\b/i, type: 'declaration' },
-                { pattern: /\b(started|finished|completed)\s+(?:a\s+|my\s+)?(\w[\w\s]{2,}?)\b/i, type: 'status' }
+                { pattern: /\b(?:called|named)\s+([A-Za-z0-9_\-\s]+?)(?:\s+project|\s*[.!?]|$)/i, type: 'declaration' },
+                { pattern: /\b(started|finished|completed)\s+(?:a\s+|an\s+|my\s+|the\s+)?([A-Za-z0-9_\-\s]+?)(?:\s+project|\s*[.!?]|$)/i, type: 'status' },
+                { pattern: /\b(working on|developing|coding)\s+(?:a\s+|an\s+|my\s+|the\s+)?(?:new\s+)?([A-Za-z0-9_\-\s]+?)(?:\s+project|\s*[.!?]|$)/i, type: 'development' },
+                { pattern: /\b(building|making|creating|designing)\s+(?:a\s+|an\s+|my\s+|the\s+)?(?:new\s+)?(?:[\w]+\s+){0,2}?(?:called|named)\s+([A-Za-z0-9_\-\s]+?)(?:\s+project|\s*[.!?]|$)/i, type: 'building' },
+                { pattern: /\b(building|making|creating|designing)\s+(?:a\s+|an\s+|my\s+|the\s+)?(?:new\s+)?([A-Z][A-Za-z0-9_\-\s]*?)(?:\s+project|\s*[.!?]|$)/, type: 'building' }
             ];
             
             let detectedProject = null;
@@ -1837,21 +1903,50 @@
             if (detectedProject) {
                 detectedProject = detectedProject.replace(/\b(robot|app|game|model|design|project)\b/gi, '').trim();
                 
+                // Ignore common stop words if captured by mistake
+                if (detectedProject.length < 2 || ['new', 'the', 'my', 'a', 'an'].includes(detectedProject.toLowerCase())) return null;
+
                 // Check if existing project
                 const existingProject = userPreferences.activeProjects.find(p => 
                     p.name.toLowerCase().includes(detectedProject.toLowerCase()) || 
                     detectedProject.toLowerCase().includes(p.name.toLowerCase())
                 );
                 
+                let responseMessage = '';
+
+                const specificQuestions = {
+                    fluffy: [
+                        "What language are you using? 💻",
+                        "Is it going to be colorful? 🎨",
+                        "What's the most fun part so far? ✨",
+                        "Are you building it for someone special? 🎁"
+                    ],
+                    coolboy: [
+                        "What language are you using? 💻",
+                        "What tech stack you running? 🛠️",
+                        "Any tricky bugs so far? 🐛",
+                        "What's the core feature? 🎯"
+                    ]
+                };
+                const randomQuestion = specificQuestions[currentMode][Math.floor(Math.random() * specificQuestions[currentMode].length)];
+
                 if (existingProject) {
-                    if (projectType === 'status' && input.toLowerCase().includes('finished')) {
+                    if (projectType === 'status' && (input.toLowerCase().includes('finished') || input.toLowerCase().includes('completed'))) {
                         existingProject.status = 'completed';
                         existingProject.completedDate = new Date().toISOString();
                         userPreferences.completedProjects.push({...existingProject});
                         userPreferences.activeProjects = userPreferences.activeProjects.filter(p => p.id !== existingProject.id);
+                        
+                        responseMessage = currentMode === 'fluffy'
+                            ? `Yay! You finished ${existingProject.name}! 🎉 That's incredible! What are you going to build next? 💖`
+                            : `Respect! ${existingProject.name} is done? 🏆 Nice work wrapping that up! What's next? 🚀`;
                     } else {
                         existingProject.lastUpdated = new Date().toISOString();
                         existingProject.updateCount = (existingProject.updateCount || 0) + 1;
+                        
+                        responseMessage = currentMode === 'fluffy'
+                            ? `I'm so happy to hear updates about ${existingProject.name}! 🎀 ${randomQuestion} ✨`
+                            : `Solid update on ${existingProject.name}. 👊 ${randomQuestion} 🔥`;
                     }
                     
                     userPreferences.projectUpdates[existingProject.id] = userPreferences.projectUpdates[existingProject.id] || [];
@@ -1888,20 +1983,19 @@
                     
                     showStatus(`🎉 New project detected: ${detectedProject}!`);
                     
-                    addMessage(
-                        currentMode === 'fluffy'
-                            ? `Ooh, you're working on ${detectedProject}! 🎀 That sounds amazing! Want to tell me more about it? 💖`
-                            : `Nice! ${detectedProject} sounds legit! 🔥 What's your plan for it? 🚀`,
-                        false
-                    );
+                    responseMessage = currentMode === 'fluffy'
+                        ? `Ooh, you're working on ${detectedProject}! 🎀 That sounds amazing! ${randomQuestion} 💖`
+                        : `Nice! ${detectedProject} sounds legit! 🔥 ${randomQuestion} 🚀`;
                 }
                 
                 updateProjectBadge();
                 savePreferences();
-                return true;
+                
+                // Return the response string instead of adding it directly (prevents double messages)
+                return responseMessage;
             }
             
-            return false;
+            return null;
         }
 
         // Generate project ID
@@ -2005,7 +2099,8 @@
             }
             
             // Check for projects
-            const projectDetected = detectAndTrackProjects(input, currentTopic);
+            const projectResponse = detectAndTrackProjects(input, currentTopic);
+            if (projectResponse) return projectResponse;
             
             // Check for technical topics
             const topicMap = [
@@ -2031,7 +2126,7 @@
             }
 
             // Ask about projects
-            if (!projectDetected && shouldAskAboutProjects() && Math.random() < 0.3) {
+            if (!projectResponse && shouldAskAboutProjects() && Math.random() < 0.3) {
                 const projectResponse = getProjectResponse();
                 if (projectResponse) {
                     return `<div class="project-question">${projectResponse.response}</div>`;
@@ -2264,6 +2359,9 @@
                     </div>
                 </div>
                 <div class="project-description">${project.description}</div>
+                ${project.details ? Object.entries(project.details).map(([key, value]) => 
+                    `<div style="font-size: 11px; color: #666; margin-top: 4px;"><strong>${key}:</strong> ${value}</div>`
+                ).join('') : ''}
                 ${isActive ? `
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: ${progress}%"></div>
@@ -2517,6 +2615,24 @@
             const blob = new Blob([dataStr], { type: 'application/json' });
             downloadFile(blob, `chat-${currentMode}-${getDateString()}.json`);
             showStatus('💾 Chat exported as JSON!');
+        }
+
+        function exportProjects() {
+            const projectsData = {
+                exportDate: new Date().toISOString(),
+                activeProjects: userPreferences.activeProjects,
+                completedProjects: userPreferences.completedProjects
+            };
+            
+            if (userPreferences.activeProjects.length === 0 && userPreferences.completedProjects.length === 0) {
+                showStatus('⚠️ No projects found to export');
+                return;
+            }
+
+            const dataStr = JSON.stringify(projectsData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            downloadFile(blob, `projects-${getDateString()}.json`);
+            showStatus('💾 Projects exported successfully!');
         }
 
         function exportTXT() {
