@@ -383,9 +383,9 @@ Yes! Three ways:
 ### Community Requests
 
 - [x] Dark mode
-- [ ] Voice input (speech-to-text)
-- [ ] Image upload support
-- [ ] Calendar integration
+- [x] Voice input (speech-to-text)
+- [x] Image upload support
+- [x] Calendar integration
 
 ---
 
