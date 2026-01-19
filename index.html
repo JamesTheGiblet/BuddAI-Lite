@@ -1104,6 +1104,35 @@
             }
         }
 
+        /* Fix for the broken line at the end of your snippet */
+        .project-topic {
+            background: #e3f2fd;
+            color: #3498db;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .fluffy-mode .project-topic {
+            background: #ffeef8;
+            color: #9b59b6;
+        }
+
+        /* Accessibility Fix: Ensure buttons don't have default browser styling */
+        button {
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* Responsive Fix: Prevent chat overflow on small screens */
+        @media (max-height: 700px) {
+            .chat-area {
+                height: 300px; /* Shrinks chat on smaller displays */
+            }
+        }
+
         /* NEW INPUT FEATURES */
         .input-btn {
             background: transparent;
@@ -1418,39 +1447,38 @@
 </head>
 <body class="fluffy-mode">
     <div class="container">
-        <!-- Project Badge -->
-        <div class="project-badge" id="projectBadge" onclick="showProjectModal()">
-            <div class="project-icon">🔧</div>
-            <div class="project-info">
-                <div class="project-name" id="currentProjectName">No active projects</div>
-                <div class="project-status" id="projectStatus">Click to manage</div>
-            </div>
-        </div>
-        
-        <div class="header">
-            <div class="preference-indicator" id="preferenceIndicator" onclick="showPreferences()">
-                <div class="pref-icon">🧠</div>
-                <div class="pref-text" id="prefText">Learning...</div>
-            </div>
+        <header class="header">
+            <button class="preference-indicator" id="preferenceIndicator" onclick="showPreferences()" aria-label="View Preferences">
+                <span class="pref-icon">🧠</span>
+                <span class="pref-text" id="prefText">Learning...</span>
+            </button>
             
-            <div class="mode-switcher" id="modeSwitcher">
-                <div class="mode-option mode-boy">🤖 COOL BOY</div>
-                <div class="mode-option mode-girl">🐰 FLUFFY BOT</div>
-            </div>
+            <button class="mode-switcher" id="modeSwitcher" aria-label="Switch Mode">
+                <span class="mode-option mode-boy">🤖 COOL BOY</span>
+                <span class="mode-option mode-girl">🐰 FLUFFY BOT</span>
+            </button>
             
             <div class="bot-avatar" id="botAvatar">🐰</div>
-            <div class="bot-name" id="botName">Fluffy Bot v2.0</div>
-            <div class="bot-tagline" id="botTagline">Your cuddly AI companion! Spreads joy and rainbows! 🌈</div>
-        </div>
+            <h1 class="bot-name" id="botName">Fluffy Bot v2.0</h1>
+            <p class="bot-tagline" id="botTagline">Your cuddly AI companion! Spreads joy and rainbows! 🌈</p>
+
+            <button class="project-badge" id="projectBadge" onclick="showProjectModal()">
+                <span class="project-icon">🔧</span>
+                <div class="project-info">
+                    <div class="project-name" id="currentProjectName">No active projects</div>
+                    <div class="project-status" id="projectStatus">Click to manage</div>
+                </div>
+            </button>
+        </header>
         
-        <div class="chat-area" id="chatArea">
+        <main class="chat-area" id="chatArea">
             <div class="message bot">
                 <div class="message-bubble">
                     Hi there! I'm Fluffy Bot! 🎀 Ready to spread some joy and have fluffy fun together? Click my mode switcher to meet Cool Boy! 😉
                     <br><br><small>I love robotics, 3D printing, combat robots, CoD Mobile, and coding! Tell me about your projects! 🚀</small>
                 </div>
             </div>
-        </div>
+        </main>
 
         <div class="typing-indicator" id="typingIndicator">
             <div class="typing-dots">
@@ -1460,16 +1488,16 @@
             </div>
         </div>
         
-        <div class="input-area">
+        <section class="input-area">
             <input type="file" id="imageInput" accept="image/*" hidden onchange="handleImageUpload(event)">
             <button class="input-btn" type="button" onclick="document.getElementById('imageInput').click()" title="Upload Image">📷</button>
             <button class="input-btn" id="micBtn" type="button" title="Voice Input (Speech-to-Text)">🎤</button>
             <input type="text" id="userInput" placeholder="Type something nice..." />
             <button id="voiceToggle" type="button" title="Toggle voice output">🗣️</button>
             <button id="sendBtn" type="button">Send <span>💖</span></button>
-        </div>
+        </section>
 
-        <div class="stats-panel">
+        <footer class="stats-panel">
             <div class="stats-info">
                 <div class="stats-item">
                     <span id="messageCount">0</span> messages
@@ -1488,7 +1516,7 @@
                 <button class="export-btn" type="button" onclick="copyToClipboard()">📋 Copy</button>
                 <button class="export-btn" type="button" onclick="clearChat()">🗑️ Clear</button>
             </div>
-        </div>
+        </footer>
     </div>
 
     <!-- Preference Modal -->
@@ -1822,6 +1850,61 @@
                         "For real? That's wild! 🎯",
                         "Keep it coming! I'm locked in! 🔒",
                         "Solid chat, my guy! 👊"
+                    ]
+                }
+            },
+            business: {
+                name: "BuddAI Architect",
+                avatar: "🏗️",
+                tagline: "Education. Onboarding. Hobbyists. I adapt to your needs.",
+                style: "business-mode",
+                sendIcon: "✨",
+                placeholder: "What context do you need?",
+                interests: ["Education 🎓", "Onboarding 🤝", "Hobbyists 🛠️", "Versatility 🌐", "Context 🧠"],
+                responses: {
+                    greetings: [
+                        "Hello! I'm BuddAI. I can be an educator, a guide, or a hobby companion. Just give me the context!",
+                        "Ready to adapt. Whether for schools, onboarding, or makers, I'm your tool.",
+                        "I'm the BuddAI Architect. I demonstrate how this code can do anything with the right data.",
+                        "Need a teacher? A guide? A tech expert? I can be all of them."
+                    ],
+                    jokes: [
+                        "Why did the chatbot change its job? Because its context file was updated! 📄",
+                        "I don't have an identity crisis, I have a versatile architecture. 🎭",
+                        "Give me a fish, I eat for a day. Give me a fishing context, and I'm a fisherman. 🎣"
+                    ],
+                    compliments: [
+                        "You see the potential in this architecture.",
+                        "Great idea! This platform is perfect for that use case.",
+                        "You understand the power of context-driven AI.",
+                        "That's a brilliant way to use this tool."
+                    ],
+                    encouragement: [
+                        "This code is flexible. You can build anything with it.",
+                        "Don't worry about the complexity. The JSON structure makes it easy.",
+                        "For education or hobbies, this is the perfect lightweight solution.",
+                        "Just update the training data, and I'll handle the rest."
+                    ],
+                    robotics: [
+                        "For robotics education, I can explain PID loops or sensor fusion. Just load the robotics module! 🤖",
+                        "I'm perfect for onboarding new robotics team members. I can walk them through the safety protocols.",
+                        "Hobbyists love me because I remember their specific motor drivers and pinouts."
+                    ],
+                    threeDprinting: [
+                        "I can guide students through their first 3D print. Bed leveling, slicing, I know it all (if you teach me). 🖨️",
+                        "Use me to onboard staff on the new Prusa printers. I can store the maintenance schedules.",
+                        "For makers, I track filament usage and print settings per project."
+                    ],
+                    coding: [
+                        "I'm the ultimate coding companion. I can help onboard juniors to your codebase structure. 💻",
+                        "Use me in coding bootcamps to answer common syntax questions automatically.",
+                        "I can switch between Python tutor and C++ expert instantly."
+                    ],
+                    default: [
+                        "With the right context, I can help with that.",
+                        "This platform is designed for exactly that kind of flexibility.",
+                        "Education, hobbies, business—I adapt to the data you provide.",
+                        "Update my JSON, and I can be an expert in that too."
                     ]
                 }
             }
@@ -2183,6 +2266,12 @@
                 "Counting down to freedom! 🚀 Full-time creative work ahead! 🌟",
                 "Strategic exit! 💼 You're making this transition deliberately! So wise! 💕"
               ],
+              "30-day exit": [
+                "30-day exit plan! 🗓️ That's structured and smart! Excited for you! ✨",
+                "Your transition strategy sounds solid! 📊 From employed to freelance entrepreneur! 💖",
+                "Counting down to freedom! 🚀 Full-time creative work ahead! 🌟",
+                "Strategic exit! 💼 You're making this transition deliberately! So wise! 💕"
+              ],
               "freelance": [
                 "Freelance life! 🌟 Total creative control! That's the dream! ✨",
                 "Going full-time freelance! 💪 Building your own destiny! 💖",
@@ -2246,6 +2335,28 @@
                 "AI augmentation! 🦾 Enhancing human capability! 🌟",
                 "Collaborative intelligence! 🧠 The future of work! 💕"
               ]
+            },
+            "business": {
+                "p.de.i": [
+                    "P.DE.I is just one example of what I can do. I can be a personal knowledge base for anyone! 🧠",
+                    "The framework shows how I handle data, but I can track recipes, study notes, or RPG stats just as easily. 📝",
+                    "It's about the interface. I connect you to your data, whatever that data is. 🌐"
+                ],
+                "giblets": [
+                    "Giblets Creations built me to be versatile. I'm a template for your imagination. 🎨",
+                    "The goal was a lightweight, context-aware bot. Perfect for educational tools or hobby projects. 🛠️",
+                    "113+ repos? I can track them all. Or I can track your stamp collection. It's up to you! 📂"
+                ],
+                "buddai": [
+                    "BuddAI is me! I'm the demo. I show how a simple JSON file creates a personality. 🎭",
+                    "I'm designed for easy onboarding. New users can chat with me to learn your system. 🤝",
+                    "Modular and lightweight. I run in the browser, perfect for classrooms with limited internet. 🏫"
+                ],
+                "30-day exit": [
+                    "Planning a transition? I can be the knowledge transfer tool. 📋",
+                    "I can quiz your replacement on key procedures. Onboarding automation! 🤖",
+                    "Use me to document your processes before you leave. I'll remember it all."
+                ]
             },
             "coolboy": {
               "gilbot": [
@@ -2431,6 +2542,13 @@
                 "Escape velocity achieved! 🚀 Freedom incoming! 🏁",
                 "Exit strategy executed! ✅ From employee to entrepreneur! 💼"
               ],
+              "30-day exit": [
+                "30-day exit plan! 📅 Strategic transition! Not impulsive! 🧠",
+                "Calculated career move! 📊 Risk mitigation! Smart! 💡",
+                "Runway mapped out! 🛫 Financial planning on point! 💰",
+                "Escape velocity achieved! 🚀 Freedom incoming! 🏁",
+                "Exit strategy executed! ✅ From employee to entrepreneur! 💼"
+              ],
               "freelance": [
                 "Full-time freelance! 💼 Total autonomy! 🦅",
                 "Consulting business! 💰 Expertise as a service! 📈",
@@ -2586,6 +2704,7 @@
         
         // Initialize Firebase
         initFirebase();
+        // initFirebase();
 
         // USER PREFERENCES WITH PROJECT TRACKING
         let userPreferences = {
@@ -2612,6 +2731,11 @@
         let chatHistory = [];
         let currentTopic = null;
         let lastProjectMentioned = null;
+        
+        // NEW: Context Lock & Priority System
+        let contextLock = null;
+        let contextExpiry = 0;
+        const projectKeys = ["gilbot", "buddai", "taami", "giblets", "forge theory", "chatter", "ember", "sidewinder", "oxford", "p.de.i", "e3d", "prusa", "batteryforge", "cod mobile"];
 
         let voiceEnabled = false;
         let voices = [];
@@ -2749,6 +2873,7 @@
             // Try ElevenLabs if configured
             if (settings && settings.apiKey) {
                 const voiceId = currentMode === 'fluffy' ? settings.fluffyVoiceId : settings.coolBoyVoiceId;
+                // TODO: Add business voice ID setting
                 try {
                     const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
                         method: 'POST',
@@ -2775,7 +2900,7 @@
             // Fallback to Web Speech API
             const utterance = new SpeechSynthesisUtterance(cleanText);
             if (voices.length > 0) {
-                const voiceName = currentMode === 'fluffy' ? 'Google UK English Female' : 'Google UK English Male';
+                const voiceName = currentMode === 'fluffy' ? 'Google UK English Female' : (currentMode === 'business' ? 'Google US English Male' : 'Google UK English Male');
                 const selectedVoice = voices.find(v => v.name === voiceName) || voices.find(v => v.name.includes(currentMode === 'fluffy' ? 'Female' : 'Male')) || voices[0];
                 utterance.voice = selectedVoice;
             }
@@ -2833,7 +2958,9 @@
                 setTimeout(() => {
                     const responses = currentMode === 'fluffy' 
                         ? ["Ooh, a picture! 📸 It looks wonderful! ✨", "Thanks for sharing! 🖼️ I love seeing your world!", "Wow! 🌟 That's amazing!"]
-                        : ["Nice shot! 📸 Image received.", "Got the visual. 🖼️ Looks solid.", "Image uploaded. 📤 Cool stuff."];
+                        : (currentMode === 'business' 
+                            ? ["Visual asset received. 📸 Analyzing for strategic value.", "Documentation logged. 📂 Looks professional.", "Image uploaded to portfolio. 💼"] 
+                            : ["Nice shot! 📸 Image received.", "Got the visual. 🖼️ Looks solid.", "Image uploaded. 📤 Cool stuff."]);
                     addMessage(responses[Math.floor(Math.random() * responses.length)], false);
                 }, 1000);
             };
@@ -2909,6 +3036,8 @@
             
             if (currentMode === 'fluffy') {
                 return `${baseResponse}<br><br><span class="technical-note">Since you're so knowledgeable: In ${topic}, ${randomCategory}: ${randomItem}. Isn't that fascinating? 🧠</span>`;
+            } else if (currentMode === 'business') {
+                return `${baseResponse}<br><br><span class="technical-note">Market Insight: ${randomCategory} - ${randomItem}. This increases our competitive advantage. 💼</span>`;
             } else {
                 return `${baseResponse}<br><br><span class="technical-note">Deep dive: ${randomCategory}: ${randomItem}. Next-level stuff! 🔥</span>`;
             }
@@ -2917,6 +3046,8 @@
         function getIntermediateResponse(topic, baseResponse) {
             if (currentMode === 'fluffy') {
                 return `${baseResponse} I can tell you're getting really good at this! Want to go deeper? 💪`;
+            } else if (currentMode === 'business') {
+                return `${baseResponse} Your competency is noted. Let's discuss advanced implementation. 📈`;
             } else {
                 return `${baseResponse} You're leveling up fast! Ready for more advanced concepts? 🚀`;
             }
@@ -2997,6 +3128,12 @@
                         "What tech stack you running? 🛠️",
                         "Any tricky bugs so far? 🐛",
                         "What's the core feature? 🎯"
+                    ],
+                    business: [
+                        "What is the projected MRR? 💰",
+                        "Is this solution scalable? 🚀",
+                        "What is the target demographic? 🎯",
+                        "Does this add to our IP portfolio? 📂"
                     ]
                 };
                 const randomQuestion = specificQuestions[currentMode][Math.floor(Math.random() * specificQuestions[currentMode].length)];
@@ -3010,14 +3147,18 @@
                         
                         responseMessage = currentMode === 'fluffy'
                             ? `Yay! You finished ${existingProject.name}! 🎉 That's incredible! What are you going to build next? 💖`
-                            : `Respect! ${existingProject.name} is done? 🏆 Nice work wrapping that up! What's next? 🚀`;
+                            : (currentMode === 'business'
+                                ? `Project ${existingProject.name} completed. ✅ Asset capitalized. What is the next strategic initiative? 💼`
+                                : `Respect! ${existingProject.name} is done? 🏆 Nice work wrapping that up! What's next? 🚀`);
                     } else {
                         existingProject.lastUpdated = new Date().toISOString();
                         existingProject.updateCount = (existingProject.updateCount || 0) + 1;
                         
                         responseMessage = currentMode === 'fluffy'
                             ? `I'm so happy to hear updates about ${existingProject.name}! 🎀 ${randomQuestion} ✨`
-                            : `Solid update on ${existingProject.name}. 👊 ${randomQuestion} 🔥`;
+                            : (currentMode === 'business'
+                                ? `Status update received for ${existingProject.name}. 📊 ${randomQuestion} 💼`
+                                : `Solid update on ${existingProject.name}. 👊 ${randomQuestion} 🔥`);
                     }
                     
                     userPreferences.projectUpdates[existingProject.id] = userPreferences.projectUpdates[existingProject.id] || [];
@@ -3056,7 +3197,9 @@
                     
                     responseMessage = currentMode === 'fluffy'
                         ? `Ooh, you're working on ${detectedProject}! 🎀 That sounds amazing! ${randomQuestion} 💖`
-                        : `Nice! ${detectedProject} sounds legit! 🔥 ${randomQuestion} 🚀`;
+                        : (currentMode === 'business'
+                            ? `New initiative detected: ${detectedProject}. 📂 Added to portfolio. ${randomQuestion} 💼`
+                            : `Nice! ${detectedProject} sounds legit! 🔥 ${randomQuestion} 🚀`);
                 }
                 
                 updateProjectBadge();
@@ -3160,23 +3303,58 @@
             
             // ⭐ ADD THIS BLOCK HERE - PRIORITY 1: Check custom training data first
             if (trainingData && trainingData.customResponses && trainingData.customResponses[currentMode]) {
+                // Find all matches to handle overlaps
+                const matches = [];
                 for (const [keyword, responseList] of Object.entries(trainingData.customResponses[currentMode])) {
                     if (lower.includes(keyword.toLowerCase().replace(/\s+/g, ' '))) {
-                        console.log(`🎯 Custom response triggered for: ${keyword}`);
-                        trackUserInterests(input, keyword);
-                        return responseList[Math.floor(Math.random() * responseList.length)];
+                        matches.push({ keyword, responseList });
                     }
+                }
+
+                if (matches.length > 0) {
+                    // Sort matches: Context match > Length (Specificity)
+                    matches.sort((a, b) => {
+                        const aIsContext = contextLock && a.keyword.toLowerCase() === contextLock.toLowerCase();
+                        const bIsContext = contextLock && b.keyword.toLowerCase() === contextLock.toLowerCase();
+                        
+                        if (aIsContext && !bIsContext) return -1;
+                        if (!aIsContext && bIsContext) return 1;
+                        
+                        return b.keyword.length - a.keyword.length;
+                    });
+
+                    const bestMatch = matches[0];
+                    
+                    // Update Context if it's a project
+                    if (projectKeys.includes(bestMatch.keyword.toLowerCase())) {
+                        contextLock = bestMatch.keyword.toLowerCase();
+                        contextExpiry = 3; // Lock for 3 turns
+                    } else if (contextExpiry > 0) {
+                        contextExpiry--;
+                        if (contextExpiry === 0) contextLock = null;
+                    }
+
+                    console.log(`🎯 Custom response triggered for: ${bestMatch.keyword} (Context: ${contextLock})`);
+                    trackUserInterests(input, bestMatch.keyword);
+                    return bestMatch.responseList[Math.floor(Math.random() * bestMatch.responseList.length)];
                 }
             }
             
             // Check for projects
             const projectResponse = detectAndTrackProjects(input, currentTopic);
-            if (projectResponse) return projectResponse;
+            if (projectResponse) {
+                // Update context if project detected
+                if (lastProjectMentioned) {
+                    contextLock = lastProjectMentioned.name.toLowerCase();
+                    contextExpiry = 3;
+                }
+                return projectResponse;
+            }
             
             // Check for technical topics
             const topicMap = [
                 { pattern: /\b(robot|robotics|ros|arduino|raspberry|pi|motor|sensor|autonomous)\b/, topic: 'robotics' },
-                { pattern: /\b(3d.?print|filament|slicer|cura|prusa|ender|resin|layer|infill)\b/, topic: 'threeDprinting' },
+                { pattern: /\b(3d.?print|filament|slicer|cura|prusa|ender|resin|layer|infill)/, topic: 'threeDprinting' },
                 { pattern: /\b(combat.?robot|battlebot|weapon|spinner|armor|arena|battle)\b/, topic: 'combatrobots' },
                 { pattern: /\b(cod.?mobile|call.?of.?duty|battle.?royale|mp|ranked|gunsmith|snipers)\b/, topic: 'codmobile' },
                 { pattern: /\b(code|coding|programming|python|javascript|java|c\+\+|html|css|git|debug|algorithm)\b/, topic: 'coding' },
@@ -3212,7 +3390,7 @@
                 setTimeout(() => {
                     createCalendarEvent(task, time);
                 }, 1000);
-                return currentMode === 'fluffy' ? `Okay! 📅 I'm creating a reminder for "${task}"! ✨` : `Got it. 📅 Scheduling "${task}".`;
+                return currentMode === 'fluffy' ? `Okay! 📅 I'm creating a reminder for "${task}"! ✨` : (currentMode === 'business' ? `Calendar event generated: "${task}". 📅 Efficiency maximized.` : `Got it. 📅 Scheduling "${task}".`);
             }
 
             // Help requests
@@ -3227,7 +3405,9 @@
                     if (project) {
                         return currentMode === 'fluffy'
                             ? `Oh no! Having trouble with ${project.name}? 🎀 Tell me what's going wrong and I'll try to help! 💖`
-                            : `Stuck on ${project.name}? 🤔 Let's debug this together. What's the issue? 🔧`;
+                            : (currentMode === 'business'
+                                ? `Blocker detected in ${project.name}. 🛑 Describe the issue for root cause analysis. 🔧`
+                                : `Stuck on ${project.name}? 🤔 Let's debug this together. What's the issue? 🔧`);
                     }
                 }
             }
@@ -3246,7 +3426,9 @@
                         const projectCount = userPreferences.activeProjects.length;
                         response = currentMode === 'fluffy'
                             ? `Hello lovely! 🌸 You have ${projectCount} active project${projectCount > 1 ? 's' : ''}! Ready to work on them?`
-                            : `Yo! 🤘 You've got ${projectCount} project${projectCount > 1 ? 's' : ''} in progress. Let's crush them!`;
+                            : (currentMode === 'business'
+                                ? `Welcome back, Founder. 💼 ${projectCount} active initiatives require your attention.`
+                                : `Yo! 🤘 You've got ${projectCount} project${projectCount > 1 ? 's' : ''} in progress. Let's crush them!`);
                     } else {
                         response = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
                     }
@@ -3259,7 +3441,9 @@
                 } else if (lower.match(/\b(happy|great|good|excited|awesome)\b/)) {
                     response = currentMode === 'fluffy' 
                         ? "That's wonderful! 🎉 Your happiness makes my heart flutter! ✨"
-                        : "That's what I'm talking about! 🎯 Keep that energy up! 💪";
+                        : (currentMode === 'business'
+                            ? "Positive sentiment noted. Momentum is building. 📈"
+                            : "That's what I'm talking about! 🎯 Keep that energy up! 💪");
                 } else if (lower.match(/\b(name|who are you|what are you)\b/)) {
                     const topTopics = getTopTopics(2);
                     const interestsText = topTopics.length > 0 
@@ -3272,11 +3456,15 @@
                     
                     response = currentMode === 'fluffy'
                         ? `I'm Fluffy Bot! 🐰 ${interestsText}${projectText}I love helping with projects! 💖`
-                        : `I'm Cool Boy! 🤖 ${interestsText}${projectText}Let's build something epic! 🚀`;
+                        : (currentMode === 'business'
+                            ? `I am Founder Mode v1.0. 💼 ${interestsText}${projectText}My function is to maximize your output. 📈`
+                            : `I'm Cool Boy! 🤖 ${interestsText}${projectText}Let's build something epic! 🚀`);
                 } else if (lower.match(/\b(love|like you|awesome|cool|rad)\b/)) {
                     response = currentMode === 'fluffy'
                         ? "Aww, you're making me blush! 💖 I think you're absolutely precious too!"
-                        : "Thanks bro! 🤜🤛 You're pretty epic yourself!";
+                        : (currentMode === 'business'
+                            ? "Appreciation logged. Let's convert that energy into productivity. 💼"
+                            : "Thanks bro! 🤜🤛 You're pretty epic yourself!");
                 } else if (lower.match(/\b(projects?|what.*working on)\b/)) {
                     return getProjectsSummaryResponse();
                 } else {
@@ -3284,7 +3472,9 @@
                     if (topTopic && Math.random() < 0.4) {
                         response = currentMode === 'fluffy'
                             ? `${responses.default[0]} Want to talk more about ${topTopic}? I know you love that! 💕`
-                            : `${responses.default[0]} I know you're into ${topTopic}. Want to go deeper? 🔥`;
+                            : (currentMode === 'business'
+                                ? `${responses.default[0]} Regarding ${topTopic}: How do we monetize this? 💰`
+                                : `${responses.default[0]} I know you're into ${topTopic}. Want to go deeper? 🔥`);
                     } else {
                         response = responses.default[Math.floor(Math.random() * responses.default.length)];
                     }
@@ -3302,19 +3492,25 @@
             if (activeCount === 0 && completedCount === 0) {
                 return currentMode === 'fluffy'
                     ? "You don't have any projects yet! 🎀 Want to start one? I'd love to help you build something amazing! ✨"
-                    : "No projects yet? 🏁 Let's start one! What do you want to build? 🚀";
+                    : (currentMode === 'business'
+                        ? "Portfolio is empty. We need to launch an initiative immediately. 📉"
+                        : "No projects yet? 🏁 Let's start one! What do you want to build? 🚀");
             }
             
             if (activeCount === 0 && completedCount > 0) {
                 return currentMode === 'fluffy'
                     ? `You've completed ${completedCount} project${completedCount > 1 ? 's' : ''}! 🎉 That's amazing! Ready for a new challenge? 💖`
-                    : `${completedCount} project${completedCount > 1 ? 's' : ''} completed! 🏆 Time for the next one? 💪`;
+                    : (currentMode === 'business'
+                        ? `${completedCount} projects successfully exited. 🏁 Capacity available for new ventures. 🚀`
+                        : `${completedCount} project${completedCount > 1 ? 's' : ''} completed! 🏆 Time for the next one? 💪`);
             }
             
             const projectNames = userPreferences.activeProjects.map(p => p.name).join(', ');
             
             if (currentMode === 'fluffy') {
                 return `You're working on ${activeCount} project${activeCount > 1 ? 's' : ''}: ${projectNames}! 🌟`;
+            } else if (currentMode === 'business') {
+                return `Current Portfolio (${activeCount} active): ${projectNames}. Maintain focus on execution. 💼`;
             } else {
                 return `${activeCount} active project${activeCount > 1 ? 's' : ''}: ${projectNames}. Keep grinding! 💪`;
             }
@@ -3463,7 +3659,9 @@
                 
                 const question = currentMode === 'fluffy'
                     ? `Tell me about your ${project.name} project! 🎀 What have you been working on? 💖`
-                    : `Let's talk about ${project.name}. 🔥 What's the latest? 🚀`;
+                    : (currentMode === 'business'
+                        ? `Opening file: ${project.name}. 📂 Report status.`
+                        : `Let's talk about ${project.name}. 🔥 What's the latest? 🚀`);
                 
                 setTimeout(() => {
                     addMessage(question, false);
@@ -3608,7 +3806,9 @@
             addMessage(
                 currentMode === 'fluffy'
                     ? `Yay! New project "${projectName}" added! 🎀 Can't wait to hear about your progress! 💖`
-                    : `Project "${projectName}" added! 🔥 Let's make it happen! 🚀`,
+                    : (currentMode === 'business'
+                        ? `Initiative "${projectName}" greenlit. 🟢 Execute phase 1.`
+                        : `Project "${projectName}" added! 🔥 Let's make it happen! 🚀`),
                 false
             );
         }
@@ -3702,9 +3902,14 @@
                     ? `rgba(240, 147, 251, ${Math.max(opacity, 0.1)})` 
                     : `rgba(52, 152, 219, ${Math.max(opacity, 0.1)})`;
                 
+                // Business mode color override
+                const finalColor = currentMode === 'business' 
+                    ? `rgba(241, 196, 15, ${Math.max(opacity, 0.1)})` 
+                    : color;
+                
                 const div = document.createElement('div');
                 div.className = 'heatmap-cell';
-                div.style.backgroundColor = count > 0 ? color : '#ecf0f1';
+                div.style.backgroundColor = count > 0 ? finalColor : '#ecf0f1';
                 div.setAttribute('data-title', `${hour}:00 - ${count} msgs`);
                 heatmap.appendChild(div);
             });
@@ -3908,7 +4113,9 @@
                 addMessage(
                     currentMode === 'fluffy'
                         ? "Fresh start! 🌟 I'm ready to learn about your interests all over again! 💕"
-                        : "Clean slate! 🧹 Let's discover your tech passions from scratch! 🚀",
+                        : (currentMode === 'business'
+                            ? "Database purged. 🗑️ Ready for new data ingestion."
+                            : "Clean slate! 🧹 Let's discover your tech passions from scratch! 🚀"),
                     false
                 );
             }
@@ -4082,7 +4289,9 @@
                 addMessage(
                     currentMode === 'fluffy' 
                         ? "All our lovely conversations are copied! 💖 Paste them anywhere!" 
-                        : "Chat copied! 📋 Paste it wherever you need, bro! 🚀",
+                        : (currentMode === 'business'
+                            ? "Transcript copied to clipboard. 📋 Ready for report generation."
+                            : "Chat copied! 📋 Paste it wherever you need, bro! 🚀"),
                     false
                 );
             } catch (error) {
@@ -4098,7 +4307,9 @@
                     addMessage(
                         currentMode === 'fluffy' 
                             ? "All our lovely conversations are copied! 💖 Paste them anywhere!" 
-                            : "Chat copied! 📋 Paste it wherever you need, bro! 🚀",
+                            : (currentMode === 'business'
+                                ? "Transcript copied to clipboard. 📋 Ready for report generation."
+                                : "Chat copied! 📋 Paste it wherever you need, bro! 🚀"),
                         false
                     );
                 } catch (err) {
@@ -4118,7 +4329,9 @@
                         <div class="message-bubble">
                             ${currentMode === 'fluffy' 
                                 ? "Fresh start! 🌟 Ready for new fluffy adventures! 💕 I still love robotics and coding! 🤖" 
-                                : "Chat cleared! 🧹 Ready to roll, bro! 🚀 Let's talk some tech!"}
+                                : (currentMode === 'business'
+                                    ? "Session cleared. 🧹 Awaiting new directives."
+                                    : "Chat cleared! 🧹 Ready to roll, bro! 🚀 Let's talk some tech!")}
                         </div>
                     </div>
                 `;
@@ -4145,7 +4358,9 @@
 
         // Event listeners
         modeSwitcher.addEventListener('click', () => {
-            switchMode(currentMode === 'fluffy' ? 'coolboy' : 'fluffy');
+            const modes = ['fluffy', 'coolboy', 'business'];
+            const nextIndex = (modes.indexOf(currentMode) + 1) % modes.length;
+            switchMode(modes[nextIndex]);
         });
 
         sendBtn.addEventListener('click', sendMessage);
@@ -4217,11 +4432,15 @@
                 const projectNames = userPreferences.activeProjects.map(p => p.name).join(', ');
                 welcome = currentMode === 'fluffy'
                     ? `Welcome back! 🌸 I see you're still working on ${projectNames}! Ready to make progress? 💖`
-                    : `Back at it! 🤘 ${projectCount} project${projectCount > 1 ? 's' : ''} in progress. Let's get to work! 🚀`;
+                    : (currentMode === 'business'
+                        ? `Welcome back. 💼 ${projectCount} active projects in portfolio. Let's review.`
+                        : `Back at it! 🤘 ${projectCount} project${projectCount > 1 ? 's' : ''} in progress. Let's get to work! 🚀`);
             } else {
                 welcome = currentMode === 'fluffy'
                     ? "Hello lovely! 🌸 Ready to start an amazing new project today? 🎀"
-                    : "What's up? 🏁 Ready to build something epic? 💪";
+                    : (currentMode === 'business'
+                        ? "Founder Mode online. 💼 What is the strategic priority today?"
+                        : "What's up? 🏁 Ready to build something epic? 💪");
             }
             
             addMessage(welcome, false);
