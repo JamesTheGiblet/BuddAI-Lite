@@ -1456,6 +1456,14 @@
             </div>
             
             <div class="preference-section">
+                <h4>Appearance</h4>
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span>🌙 Dark Mode</span>
+                </label>
+            </div>
+            
+            <div class="preference-section">
                 <h4>Favorite Topics</h4>
                 <div id="favoriteTopicsList" class="topic-list"></div>
             </div>
@@ -2057,7 +2065,8 @@
                 apiKey: '',
                 fluffyVoiceId: '21m00Tcm4TlvDq8ikWAM', // Default Rachel
                 coolBoyVoiceId: 'ErXwobaYiN019PkySvjV' // Default Antoni
-            }
+            },
+            darkMode: false
         };
 
         // CURRENT STATE
@@ -3192,6 +3201,10 @@
             const apiKeyInput = document.getElementById('elevenApiKey');
             if (apiKeyInput) updateVoiceSettingsFromUI();
 
+            // Save dark mode setting
+            const dmToggle = document.getElementById('darkModeToggle');
+            if (dmToggle) userPreferences.darkMode = dmToggle.checked;
+
             localStorage.setItem('chatPreferences', JSON.stringify(userPreferences));
             
             // Sync to cloud if logged in
@@ -3224,6 +3237,13 @@
                         document.getElementById('elevenApiKey').value = userPreferences.voiceSettings.apiKey || '';
                         document.getElementById('fluffyVoiceId').value = userPreferences.voiceSettings.fluffyVoiceId || '';
                         document.getElementById('coolBoyVoiceId').value = userPreferences.voiceSettings.coolBoyVoiceId || '';
+                    }
+
+                    // Apply Dark Mode
+                    if (userPreferences.darkMode) {
+                        document.body.classList.add('dark-mode');
+                        const dmToggle = document.getElementById('darkModeToggle');
+                        if (dmToggle) dmToggle.checked = true;
                     }
                 } catch (e) {
                     console.error('Error loading preferences:', e);
@@ -3519,6 +3539,15 @@
         ['elevenApiKey', 'fluffyVoiceId', 'coolBoyVoiceId'].forEach(id => {
             document.getElementById(id).addEventListener('change', () => savePreferences());
         });
+
+        // Dark mode listener
+        const dmToggle = document.getElementById('darkModeToggle');
+        if (dmToggle) {
+            dmToggle.addEventListener('change', (e) => {
+                document.body.classList.toggle('dark-mode', e.target.checked);
+                savePreferences();
+            });
+        }
 
         // Close modals when clicking outside
         preferenceModal.addEventListener('click', (e) => {
