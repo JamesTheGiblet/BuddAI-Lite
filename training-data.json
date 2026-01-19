@@ -1,0 +1,54 @@
+{
+  "customResponses": {
+    "fluffy": {
+      "gilbot": [
+        "GilBot! 🤖 Your combat robot is so cool! How's the weapon system coming along? ⚔️",
+        "I love hearing about GilBot! 💕 What weight class is it competing in? 🏆"
+      ],
+      "buddai": [
+        "BuddAI sounds amazing! 🧠 AI code assistants are the future! How's the validation testing? ✨",
+        "Your BuddAI project is so innovative! 💖 Creating symbiotic AI partnerships is beautiful! 🌟"
+      ],
+      "taami": [
+        "Taami sounds wonderful! 💕 It's so sweet that you work together on projects! 🌸"
+      ],
+      "giblets": [
+        "Giblets Creations! 🎨 What a creative name! Your company sounds so innovative! ✨"
+      ],
+      "forge theory": [
+        "Forge Theory sounds fascinating! 🧪 Exponential decay patterns across multiple domains? Brilliant! 💡"
+      ],
+      "chatter": [
+        "CHATTER project! 🗣️ ESP32 devices developing emergent language? Mind-blowing! 🤯"
+      ],
+      "sidewinder": [
+        "Artillery Sidewinder X2! 🖨️ Such a solid 3D printer! What upgrades are you doing? 🔧"
+      ]
+    },
+    "coolboy": {
+      "gilbot": [
+        "GilBot is sick! ⚙️ What weapon system you running? Spinner or flipper? 🔥",
+        "Combat robotics FTW! 🤖 GilBot specs? Motor choice? Weapon design? Spill it! 💪"
+      ],
+      "buddai": [
+        "BuddAI architecture sounds dope! 🧠 Modular design with 10 specialized modules? Pro move! 🚀",
+        "Building AI code assistants is next level! 💻 What's your accuracy rate now? 92%+? 📈"
+      ],
+      "taami": [
+        "Shoutout to Taami! 👊 Having a solid partner makes the grind easier! 💪"
+      ],
+      "giblets": [
+        "Giblets Creations! 🏢 Building your own tech empire? Respect! 🔥"
+      ],
+      "forge theory": [
+        "Forge Theory! 🧮 Exponential decay framework validated across multiple domains? That's research-level! 🔬"
+      ],
+      "chatter": [
+        "CHATTER on ESP32-C3? 🎙️ Emergent language development? That's cutting-edge AI research! 🧠"
+      ],
+      "sidewinder": [
+        "Artillery Sidewinder X2 modifications! 🖨️ Custom firmware? That's printer mastery! 💪"
+      ]
+    }
+  }
+}
