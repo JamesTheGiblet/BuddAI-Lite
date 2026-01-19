@@ -18,8 +18,8 @@ Quick links to all documentation for Fluffy Bot / Cool Boy
 ## 👥 Community
 
 - **[Contributors](CONTRIBUTORS.md)** - Hall of fame
-- **[GitHub Issues](https://github.com/yourusername/fluffy-cool-chatbot/issues)** - Bug reports & features
-- **[GitHub Discussions](https://github.com/yourusername/fluffy-cool-chatbot/discussions)** - Community chat
+- **[GitHub Issues](https://github.com/JamesTheGiblet/BuddAI-lite/issues)** - Bug reports & features
+- **[GitHub Discussions](https://github.com/JamesTheGiblet/BuddAI-lite/discussions)** - Community chat
 
 ## 📖 Technical Documentation
 
@@ -74,9 +74,9 @@ See [README FAQ](README.md#-faq) for more.
 
 ## 📞 Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/fluffy-cool-chatbot/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/fluffy-cool-chatbot/discussions)
-- **Email:** <your.email@example.com>
+- **Issues:** [GitHub Issues](https://github.com/JamesTheGiblet/BuddAI-lite/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/JamesTheGiblet/BuddAI-lite/discussions)
+- **Email:** <Gibletscreations@gmail.com>
 
 ## 📄 License
 

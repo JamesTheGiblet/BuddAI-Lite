@@ -4,7 +4,7 @@ Thank you to everyone who has contributed to Fluffy Bot / Cool Boy!
 
 ## Creator
 
-- **James** - [@yourusername](https://github.com/yourusername)
+- **James** - [@JamesTheGiblet](https://github.com/JamesTheGiblet)
   - Original creator and maintainer
   - Giblets Creations
   - Built with Claude (Anthropic AI)

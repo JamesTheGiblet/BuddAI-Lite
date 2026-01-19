@@ -6,8 +6,8 @@ Get up and running in 5 minutes!
 
 ```bash
 # Option A: Clone with Git
-git clone https://github.com/yourusername/fluffy-cool-chatbot.git
-cd fluffy-cool-chatbot
+git clone https://github.com/JamesTheGiblet/BuddAI-lite.git
+cd BuddAI-lite
 
 # Option B: Download ZIP
 # Click "Code" → "Download ZIP" on GitHub
@@ -88,8 +88,8 @@ Save and refresh - instant customization!
 ## Need Help?
 
 - [FAQ in README](README.md#-faq)
-- [GitHub Issues](https://github.com/yourusername/fluffy-cool-chatbot/issues)
-- [Discussions](https://github.com/yourusername/fluffy-cool-chatbot/discussions)
+- [GitHub Issues](https://github.com/JamesTheGiblet/BuddAI-lite/issues)
+- [Discussions](https://github.com/JamesTheGiblet/BuddAI-lite/discussions)
 
 ---
 

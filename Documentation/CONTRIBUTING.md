@@ -46,7 +46,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ```bash
 # Clone your fork
 git clone https://github.com/JamesTheGiblet/BuddAI-Lite.git
-cd fluffy-cool-chatbot
+cd BuddAI-lite
 
 # Create a branch
 git checkout -b feature/my-new-feature
@@ -161,7 +161,7 @@ Contributors will be added to CONTRIBUTORS.md. Major contributors may be highlig
 Feel free to open an issue with your question or reach out via:
 
 - GitHub Discussions
-- Email: <your.email@example.com>
+- Email: <Gibletscreations@gmail.com>
 
 ---
 

@@ -53,5 +53,5 @@ We may update this privacy policy from time to time. Changes will be documented 
 
 If you have any questions about this Privacy Policy, please contact us:
 
-- **Email:** <your.email@example.com>
+- **Email:** <Gibletscreations@gmail.com>
 - **GitHub:** Report an Issue

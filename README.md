@@ -6,7 +6,7 @@
 
 > A dual-personality chatbot that learns your interests, tracks your projects, and adapts to your expertise level - all while keeping your data private and costing nothing to run.
 
-![Version](https://img.shields.io/badge/version-2.0-blue)
+![Version](https://img.shields.io/badge/version-2.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Build Time](https://img.shields.io/badge/build%20time-2%20hours-orange)
 ![GitHub stars](https://img.shields.io/github/stars/jamesthegiblet/BuddAI-Lite?style=social)
@@ -67,6 +67,15 @@
 - **Modal interfaces** - Preference dashboard and project management
 - **Visual indicators** - Learning status, active projects, progress bars
 
+### 🚀 New in v2.1
+
+- **Cloud Sync** - Firebase integration for cross-device synchronization
+- **Collaboration** - Share projects with other users via ID
+- **Advanced Analytics** - Visual dashboard for chat stats and topic heatmaps
+- **Rich Input** - Voice input (Speech-to-Text) and Image upload support
+- **Smart Tools** - Calendar integration and ElevenLabs custom voice support
+- **Dark Mode** - Native dark theme support
+
 ---
 
 ## 🚀 Quick Start
@@ -90,7 +99,7 @@ cd BuddAI-Lite
 1. **File structure:**
 
 ```txt
-📁 fluffy-cool-chatbot/
+📁 BuddAI-lite/
   ├── 📄 chatbot.html
   └── 📄 training-data.json
 ```
@@ -366,25 +375,20 @@ Yes! Three ways:
 
 ## 📈 Roadmap
 
-### v2.1 (Next Release)
-
-- [x] Cloud sync (Firebase integration)
-- [x] Multi-user collaboration
-- [x] Advanced analytics dashboard
-- [x] Custom voice cloning
-
-### v3.0 (Future)
+### v2.2 (Planned)
 
 - [ ] Hybrid AI mode (pattern + API)
 - [ ] Mobile app (React Native)
 - [ ] Plugin system
 - [ ] Multi-language support
 
-### Community Requests
+### Completed in v2.1
 
+- [x] Cloud sync & Collaboration
+- [x] Advanced analytics
+- [x] Custom voice cloning
 - [x] Dark mode
-- [x] Voice input (speech-to-text)
-- [x] Image upload support
+- [x] Voice input & Image upload
 - [x] Calendar integration
 
 ---
@@ -492,10 +496,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact & Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/fluffy-cool-chatbot/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/fluffy-cool-chatbot/discussions)
-- **Twitter:** [@yourusername](https://twitter.com/yourusername)
-- **Email:** <your.email@example.com>
+- **Issues:** [GitHub Issues](https://github.com/JamesTheGiblet/BuddAI-lite/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/JamesTheGiblet/BuddAI-lite/discussions)
+- **Twitter:** [@JamesTheGiblet](https://twitter.com/JamesTheGiblet)
+- **Email:** <Gibletscreations@gmail.com>
 
 ---
 
@@ -525,14 +529,14 @@ If you find this useful, please star the repo! ⭐
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/yourusername/fluffy-cool-chatbot.git
+git remote add origin https://github.com/JamesTheGiblet/BuddAI-lite.git
 git push -u origin main
 
 # 2. Enable GitHub Pages
 # Go to: Settings → Pages → Source: main branch
 
 # 3. Your chatbot is now live at:
-# https://yourusername.github.io/fluffy-cool-chatbot/chatbot.html
+# https://JamesTheGiblet.github.io/BuddAI-lite/chatbot.html
 ```
 
 ### Netlify Drop (Easiest)
@@ -641,8 +645,8 @@ Created by **James** as part of **Giblets Creations**
 
 Made with 💖 by makers, for makers
 
-[Report Bug](https://github.com/yourusername/fluffy-cool-chatbot/issues) •
-[Request Feature](https://github.com/yourusername/fluffy-cool-chatbot/issues) •
-[Discussions](https://github.com/yourusername/fluffy-cool-chatbot/discussions)
+[Report Bug](https://github.com/JamesTheGiblet/BuddAI-lite/issues) •
+[Request Feature](https://github.com/JamesTheGiblet/BuddAI-lite/issues) •
+[Discussions](https://github.com/JamesTheGiblet/BuddAI-lite/discussions)
 
 <!-- Centered content ends -->
