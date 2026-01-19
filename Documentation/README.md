@@ -1,4 +1,6 @@
-# Fluffy Bot / Cool Boy 🎭
+# Fluffy Bot / Cool Boy 🎭 (BuddAI Lite)
+
+> A lightweight demonstration of BuddAI's dual-personality chat interface
 
 ## Project-Aware Tech Chat Assistant
 
@@ -7,6 +9,16 @@
 ![Version](https://img.shields.io/badge/version-2.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Build Time](https://img.shields.io/badge/build%20time-2%20hours-orange)
+![GitHub stars](https://img.shields.io/github/stars/jamesthegiblet/BuddAI-Lite?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jamesthegiblet/BuddAI-Lite?style=social)
+
+---
+
+## 🚀 Live Demo
+
+**Try it now:** <https://jamesthegiblet.github.io/BuddAI-Lite/>
+
+*Note: If you see index.html in the URL, the correct link is above. GitHub Pages serves index.html automatically.*
 
 ---
 
@@ -71,8 +83,8 @@
 1. **Download the files:**
 
 ```bash
-git clone https://github.com/yourusername/fluffy-cool-chatbot.git
-cd fluffy-cool-chatbot
+git clone https://github.com/JamesTheGiblet/BuddAI-Lite.git
+cd BuddAI-Lite
 ```
 
 1. **File structure:**
@@ -344,8 +356,8 @@ Yes! Three ways:
 
 ### Is it Safe?
 
-- ✅ No external API calls (except optional training data)
-- ✅ No tracking/analytics
+- ✅ No external API calls (except optional training data & analytics)
+- ✅ Privacy-friendly analytics (Simple Analytics)
 - ✅ No cookies
 - ✅ Works completely offline
 - ✅ Open source - verify the code yourself
@@ -356,7 +368,7 @@ Yes! Three ways:
 
 ### v2.1 (Next Release)
 
-- [ ] Cloud sync (Firebase integration)
+- [x] Cloud sync (Firebase integration)
 - [ ] Multi-user collaboration
 - [ ] Advanced analytics dashboard
 - [ ] Custom voice cloning

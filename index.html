@@ -1104,6 +1104,10 @@
             }
         }
     </style>
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 <body class="fluffy-mode">
     <div class="container">
@@ -1165,6 +1169,7 @@
                 </div>
             </div>
             <div class="export-controls">
+                <button class="export-btn primary" id="syncBtn" onclick="toggleSync()">☁️ Sync</button>
                 <button class="export-btn primary" onclick="exportJSON()">💾 JSON</button>
                 <button class="export-btn primary" onclick="exportTXT()">📄 TXT</button>
                 <button class="export-btn primary" onclick="exportHTML()">🌐 HTML</button>
@@ -1569,6 +1574,59 @@
             }
         };
 
+        // FIREBASE CONFIGURATION & SYNC
+        // TODO: Replace with your project's config from Firebase Console
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        let db, auth, currentUser;
+        let isFirebaseInitialized = false;
+
+        function initFirebase() {
+            if (firebaseConfig.apiKey === "YOUR_API_KEY") {
+                console.log("⚠️ Firebase not configured. Cloud sync disabled.");
+                return;
+            }
+            try {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.firestore();
+                auth = firebase.auth();
+                isFirebaseInitialized = true;
+                
+                // Auth State Listener
+                auth.onAuthStateChanged(user => {
+                    currentUser = user;
+                    const syncBtn = document.getElementById('syncBtn');
+                    if (user) {
+                        syncBtn.textContent = '☁️ Logout';
+                        syncBtn.classList.add('active');
+                        showStatus(`☁️ Logged in as ${user.email || 'User'}`);
+                        loadFromCloud();
+                    } else {
+                        syncBtn.textContent = '☁️ Sync';
+                        syncBtn.classList.remove('active');
+                    }
+                });
+                console.log("🔥 Firebase initialized");
+            } catch (e) {
+                console.error("Firebase init error:", e);
+            }
+        }
+
+        function toggleSync() {
+            if (!isFirebaseInitialized) {
+                alert("Please configure Firebase in index.html first! (See README)");
+                return;
+            }
+            if (currentUser) { auth.signOut(); } else { loginWithGoogle(); }
+        }
+
         let trainingData = null;
 
         // Load training data
@@ -1642,6 +1700,9 @@
 
         // Call on page load
         loadTrainingData();
+        
+        // Initialize Firebase
+        initFirebase();
 
         // USER PREFERENCES WITH PROJECT TRACKING
         let userPreferences = {
@@ -2551,10 +2612,41 @@
             }, duration);
         }
 
-        function savePreferences() {
+        // Cloud Sync Functions
+        function loginWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).catch(error => showStatus(`❌ Login failed: ${error.message}`));
+        }
+
+        function loadFromCloud() {
+            if (!currentUser || !db) return;
+            db.collection('users').doc(currentUser.uid).get().then(doc => {
+                if (doc.exists) {
+                    const cloudData = doc.data();
+                    // Merge cloud data with local (cloud wins for simplicity in Lite version)
+                    userPreferences = { ...userPreferences, ...cloudData };
+                    savePreferences(false); // Save to local but don't sync back immediately
+                    updatePreferenceIndicator();
+                    updateProjectBadge();
+                    showStatus('☁️ Data synced from cloud!');
+                } else {
+                    // First time sync: push local to cloud
+                    savePreferences();
+                }
+            }).catch(e => console.error("Cloud load error:", e));
+        }
+
+        function savePreferences(syncToCloud = true) {
             userPreferences.totalMessages = messageCount;
             userPreferences.lastActive = new Date().toISOString();
             localStorage.setItem('chatPreferences', JSON.stringify(userPreferences));
+            
+            // Sync to cloud if logged in
+            if (syncToCloud && currentUser && db) {
+                db.collection('users').doc(currentUser.uid).set(userPreferences, { merge: true })
+                    .then(() => console.log("☁️ Saved to cloud"))
+                    .catch(e => console.error("Cloud save error:", e));
+            }
         }
 
         function loadPreferences() {

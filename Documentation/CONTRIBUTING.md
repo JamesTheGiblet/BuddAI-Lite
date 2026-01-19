@@ -45,7 +45,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/fluffy-cool-chatbot.git
+git clone https://github.com/JamesTheGiblet/BuddAI-Lite.git
 cd fluffy-cool-chatbot
 
 # Create a branch
