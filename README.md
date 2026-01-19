@@ -369,9 +369,9 @@ Yes! Three ways:
 ### v2.1 (Next Release)
 
 - [x] Cloud sync (Firebase integration)
-- [ ] Multi-user collaboration
-- [ ] Advanced analytics dashboard
-- [ ] Custom voice cloning
+- [x] Multi-user collaboration
+- [x] Advanced analytics dashboard
+- [x] Custom voice cloning
 
 ### v3.0 (Future)
 
@@ -382,7 +382,7 @@ Yes! Three ways:
 
 ### Community Requests
 
-- [ ] Dark mode
+- [x] Dark mode
 - [ ] Voice input (speech-to-text)
 - [ ] Image upload support
 - [ ] Calendar integration
