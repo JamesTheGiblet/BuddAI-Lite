@@ -189,15 +189,14 @@
 
         /* PROJECT BADGE */
         .project-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+            position: relative;
+            margin-top: 15px;
+            display: inline-flex;
             background: rgba(52, 152, 219, 0.9);
             color: white;
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 12px;
-            display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
@@ -225,6 +224,7 @@
 
         .project-info {
             overflow: hidden;
+            text-align: left;
         }
 
         .project-name {
@@ -1089,7 +1089,7 @@
             .chat-area { height: 350px; }
             .mode-switcher { top: 15px; right: 15px; }
             .preference-indicator { top: 15px; left: 15px; max-width: 150px; }
-            .project-badge { bottom: 10px; left: 10px; max-width: 200px; }
+            .project-badge { max-width: 200px; }
             .export-controls { justify-content: center; }
             .preference-content,
             .project-content { padding: 20px; margin: 20px; }
