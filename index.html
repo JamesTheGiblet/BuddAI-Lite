@@ -1526,6 +1526,66 @@
             font-size: 10px;
             color: #95a5a6;
         }
+
+        /* PALS BUBBLES */
+        .pals-scroll-area {
+            display: flex;
+            gap: 8px;
+            padding: 10px 20px;
+            overflow-x: auto;
+            background: rgba(255,255,255,0.8);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .pals-scroll-area::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pal-bubble {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #bdc3c7;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            color: #7f8c8d;
+            flex-shrink: 0;
+        }
+
+        .pal-bubble:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+        }
+
+        .fluffy-mode .pal-bubble:hover {
+            border-color: #f093fb;
+            color: #9b59b6;
+            background: #fff5f7;
+        }
+
+        .coolboy-mode .pal-bubble:hover {
+            border-color: #3498db;
+            color: #2c3e50;
+            background: #e3f2fd;
+        }
+
+        .business-mode .pal-bubble:hover {
+            border-color: #f1c40f;
+            color: #d35400;
+            background: #fffaf0;
+        }
     </style>
     <!-- Firebase SDKs (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -1567,6 +1627,10 @@
                 </div>
             </div>
         </main>
+
+        <div class="pals-scroll-area" id="palsContainer">
+            <!-- PALS bubbles will be injected here -->
+        </div>
 
         <div class="typing-indicator" id="typingIndicator">
             <div class="typing-dots">
@@ -3220,7 +3284,8 @@
                         combatrobots: "combat robots",
                         gaming: "Gaming",
                         coding: "coding",
-                        technology: "technology"
+                        technology: "technology",
+                        projectmanagement: "Project Mgmt"
                     };
                     return topicNames[topic] || topic;
                 });
@@ -3615,11 +3680,49 @@
             },
             'education': {
                 keywords: ['education', 'teach', 'learn', 'student', 'school', 'curriculum'],
-                trainingData: {}
+                trainingData: {
+                    business: [
+                        "I can structure a curriculum for any technical subject. 📚 Just define the learning outcomes.",
+                        "Education is about scalable knowledge transfer. 📈 I can automate the grading and feedback loop.",
+                        "For students, I provide consistent, verified answers. No hallucinations, just facts. ✅",
+                        "I can adapt my complexity level based on the student's progress. 🧠 Adaptive learning is the future."
+                    ]
+                }
             },
             'onboarding': {
                 keywords: ['onboard', 'new hire', 'employee', 'training', 'orientation'],
-                trainingData: {}
+                trainingData: {
+                    business: [
+                        "Onboarding efficiency correlates directly with employee retention. 📉 Let's streamline the process.",
+                        "I can walk new hires through the company handbook and safety protocols. 📖 Consistent every time.",
+                        "Reduce the time-to-productivity for new engineers. ⏱️ I can explain the codebase architecture.",
+                        "Automated onboarding frees up senior staff for high-value tasks. 💼 Let me handle the basics."
+                    ]
+                }
+            },
+            'projectmanagement': {
+                keywords: ['project management', 'agile', 'scrum', 'kanban', 'deadline', 'milestone', 'deliverable', 'roadmap', 'sprint', 'kpi', 'scope', 'stakeholder'],
+                trainingData: {
+                    business: [
+                        "Effective project management requires clear KPIs and strict adherence to the critical path. 📊",
+                        "Scope creep is the primary cause of project failure. We must maintain rigorous change control. 🛑",
+                        "Agile methodologies allow for iterative value delivery, but we must not lose sight of the strategic roadmap. 🗺️",
+                        "Stakeholder management is as important as technical execution. Keep them aligned. 🤝",
+                        "Resource allocation must be optimized to prevent bottlenecks and ensure on-time delivery. ⏱️"
+                    ],
+                    coolboy: [
+                        "Project management? Just keep shipping, bro. 🚀",
+                        "Agile is the way. Sprints, standups, let's go! 🏃‍♂️",
+                        "Deadlines keep us honest. 💯 Grind time!",
+                        "Kanban boards are life. Moving tickets to 'Done' is so satisfying. ✅"
+                    ],
+                    fluffy: [
+                        "Project management helps us make our dreams come true! ✨ Step by step!",
+                        "I love organizing tasks! 📝 It's like a little checklist of happiness!",
+                        "Don't worry about deadlines, just do your best! 🌈 You got this!",
+                        "Teamwork makes the dream work! 🤝 Let's build something beautiful together!"
+                    ]
+                }
             },
             'hobbyist': {
                 keywords: ['hobby', 'maker', 'diy', 'project', 'tinkering'],
@@ -3639,6 +3742,41 @@
                 }
             }
             return null;
+        }
+
+        function renderPals() {
+            const container = document.getElementById('palsContainer');
+            container.innerHTML = '';
+            
+            const palDisplayNames = {
+                threeDprinting: "🖨️ 3D Printing",
+                robotics: "🤖 Robotics",
+                buddai: "🏗️ BuddAI",
+                combatrobots: "⚔️ Combat Robots",
+                gaming: "🎮 Gaming",
+                coding: "💻 Coding",
+                technology: "⚡ Technology",
+                education: "🎓 Education",
+                onboarding: "🤝 Onboarding",
+                projectmanagement: "📊 Project Mgmt",
+                hobbyist: "🛠️ Hobbyist"
+            };
+
+            Object.keys(PALS).forEach(key => {
+                if (key === 'farewell') return; // Skip farewell
+                
+                const btn = document.createElement('button');
+                btn.className = 'pal-bubble';
+                btn.textContent = palDisplayNames[key] || key;
+                btn.onclick = () => {
+                    // Trigger a conversation about this topic
+                    const keywords = PALS[key].keywords;
+                    const triggerWord = keywords[0]; 
+                    userInput.value = `Let's talk about ${triggerWord}`;
+                    sendMessage();
+                };
+                container.appendChild(btn);
+            });
         }
 
         function getResponse(input) {
@@ -3882,7 +4020,8 @@
                         combatrobots: "⚔️ Combat Robots",
                         gaming: "🎮 Gaming",
                         coding: "💻 Coding",
-                        technology: "⚡ Technology"
+                        technology: "⚡ Technology",
+                        projectmanagement: "📊 Project Mgmt"
                     };
                     
                     const div = document.createElement('div');
@@ -4770,10 +4909,17 @@
         // ======================
 
         // Event listeners
-        modeSwitcher.addEventListener('click', () => {
-            const modes = ['fluffy', 'coolboy', 'business'];
-            const nextIndex = (modes.indexOf(currentMode) + 1) % modes.length;
-            switchMode(modes[nextIndex]);
+        modeSwitcher.addEventListener('click', (e) => {
+            const target = e.target.closest('.mode-option');
+            if (target) {
+                if (target.classList.contains('mode-boy')) switchMode('coolboy');
+                else if (target.classList.contains('mode-girl')) switchMode('fluffy');
+                else if (target.classList.contains('mode-business')) switchMode('business');
+            } else {
+                const modes = ['fluffy', 'coolboy', 'business'];
+                const nextIndex = (modes.indexOf(currentMode) + 1) % modes.length;
+                switchMode(modes[nextIndex]);
+            }
         });
 
         sendBtn.addEventListener('click', sendMessage);
@@ -4787,6 +4933,7 @@
         // Load preferences
         loadPreferences();
         checkLicenseUI();
+        renderPals();
 
         // Set up skill buttons
         document.querySelectorAll('.skill-btn').forEach(btn => {
