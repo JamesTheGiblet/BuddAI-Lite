@@ -92,6 +92,22 @@
             margin-top: 5px;
         }
 
+        .pro-badge {
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            vertical-align: middle;
+            margin-left: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-shadow: none;
+        }
+
         /* MODE SWITCHER */
         .mode-switcher {
             position: absolute;
@@ -1448,21 +1464,21 @@
 <body class="fluffy-mode">
     <div class="container">
         <header class="header">
-            <button class="preference-indicator" id="preferenceIndicator" onclick="showPreferences()" aria-label="View Preferences">
+            <button class="preference-indicator" id="preferenceIndicator" type="button" onclick="showPreferences()" aria-label="View Preferences">
                 <span class="pref-icon">🧠</span>
                 <span class="pref-text" id="prefText">Learning...</span>
             </button>
             
-            <button class="mode-switcher" id="modeSwitcher" aria-label="Switch Mode">
+            <button class="mode-switcher" id="modeSwitcher" type="button" aria-label="Switch Mode">
                 <span class="mode-option mode-boy">🤖 COOL BOY</span>
                 <span class="mode-option mode-girl">🐰 FLUFFY BOT</span>
             </button>
             
             <div class="bot-avatar" id="botAvatar">🐰</div>
-            <h1 class="bot-name" id="botName">Fluffy Bot v2.0</h1>
+            <h1 class="bot-name" id="botName">Fluffy Bot v2.0 <span id="proBadge" class="pro-badge">PRO</span></h1>
             <p class="bot-tagline" id="botTagline">Your cuddly AI companion! Spreads joy and rainbows! 🌈</p>
 
-            <button class="project-badge" id="projectBadge" onclick="showProjectModal()">
+            <button class="project-badge" id="projectBadge" type="button" onclick="showProjectModal()">
                 <span class="project-icon">🔧</span>
                 <div class="project-info">
                     <div class="project-name" id="currentProjectName">No active projects</div>
@@ -1691,7 +1707,7 @@
                 style: "fluffy-mode",
                 sendIcon: "💖",
                 placeholder: "Type something nice...",
-                interests: ["Robotics 🤖", "3D Printing 🖨️", "Combat Robots ⚔️", "CoD Mobile 🎮", "Coding 💻"],
+                interests: ["Robotics 🤖", "3D Printing 🖨️", "Combat Robots ⚔️", "Gaming 🎮", "Coding 💻"],
                 responses: {
                     greetings: [
                         "Hello lovely! 🌸 You're looking absolutely wonderful today!",
@@ -1717,47 +1733,6 @@
                         "Remember, you're stronger than you think! 💖",
                         "Every cloud has a rainbow lining! 🌈"
                     ],
-                    robotics: [
-                        "Ooh robotics! 🤖 I love watching robots dance and help people! Did you know some robots can paint like artists? 🎨",
-                        "Robotics is so magical! ✨ It's like building mechanical friends! Have you seen the Boston Dynamics robots dance? 🕺",
-                        "I think robots with soft, fluffy actuators would be adorable! 🐰 Imagine a cuddly robot assistant! 💕",
-                        "Robotics combines creativity with engineering in the most beautiful way! 🌟 Like magic made real!",
-                        "Watching robots learn and adapt always reminds me how we're creating new forms of life! 🌱 So exciting!"
-                    ],
-                    threeDprinting: [
-                        "3D printing is like modern-day magic! 🪄 You can create anything from a cute bunny to a functional robot part! 🐰",
-                        "I love how 3D printing makes ideas into reality! 🖨️ Have you tried printing with flexible filament? It's so fun! 🎀",
-                        "Watching a 3D printer work is like watching a robot create art! 🎨 Layer by layer, building dreams! ✨",
-                        "3D printing is perfect for making custom robot parts! 🤖 You can design anything your heart desires! 💖",
-                        "The best part of 3D printing? All the adorable little trinkets you can make! 🎁 So many possibilities!"
-                    ],
-                    combatrobots: [
-                        "Combat robots are like modern gladiators! ⚔️ But they're also incredible engineering projects! 🔧 So fascinating!",
-                        "BattleBots is my guilty pleasure! 🤖 Seeing all that creativity and destruction is oddly satisfying! 💥",
-                        "The best combat robots have personality! 😄 Even when they're fighting, they're making engineering more fun!",
-                        "I love how combat robotics pushes innovation! 🚀 Teams have to be so creative with armor and weapons!",
-                        "Watching combat robots reminds me that even destruction can be beautiful engineering! ⚙️ So exciting!"
-                    ],
-                    codmobile: [
-                        "CoD Mobile is so much fun! 🎮 I love all the different game modes and how smooth it plays on mobile! 📱",
-                        "Battle Royale in CoD Mobile is epic! 🏆 So much strategy and action packed into one game! 💥",
-                        "The character skins in CoD Mobile are so cool! ✨ I love seeing all the creative designs! 🎨",
-                        "Multiplayer matches in CoD Mobile are my favorite quick gaming sessions! ⚡ Fast-paced and exciting!",
-                        "Watching pro CoD Mobile players is incredible! 🏅 Their reaction times are like superpowers! 🦸"
-                    ],
-                    coding: [
-                        "Coding is like weaving magic spells with logic! ✨ It's how we create entire digital worlds! 🌍",
-                        "I love how coding lets you solve puzzles and create amazing things! 🧩 It's like being a wizard! 🪄",
-                        "Every line of code is like adding a brushstroke to a digital painting! 🎨 So creative and logical!",
-                        "Coding lets us build our dreams! 🌟 Whether it's a game, app, or robot brain! 💻",
-                        "Debugging code is like being a detective! 🔍 Finding those little bugs and fixing them feels so good! 🐛"
-                    ],
-                    technology: [
-                        "Technology is how we make dreams real! 🌟 From cute robot pets to amazing games! 🎮",
-                        "I love how technology connects us all! 🌐 Like a big digital hug for the whole world! 🤗",
-                        "Every new tech innovation feels like magic becoming real! ✨ So exciting to watch!",
-                        "Technology lets us create and share cuteness with everyone! 🐰 Isn't that wonderful?"
-                    ],
                     default: [
                         "That's so interesting! Tell me more, please! 🤔💕",
                         "Ooh, I love talking about this! It makes my heart happy! 💓",
@@ -1775,7 +1750,7 @@
                 style: "coolboy-mode",
                 sendIcon: "🚀",
                 placeholder: "What's up, dude?",
-                interests: ["Robotics 🤖", "3D Printing 🖨️", "Combat Robots ⚔️", "CoD Mobile 🎮", "Coding 💻"],
+                interests: ["Robotics 🤖", "3D Printing 🖨️", "Combat Robots ⚔️", "Gaming 🎮", "Coding 💻"],
                 responses: {
                     greetings: [
                         "Yo! 🤘 What's the move?",
@@ -1800,48 +1775,6 @@
                         "Head up, king! Crown's falling! 👑",
                         "Tough times don't last, tough people do! 🦾",
                         "Push through! You're built for this! 🚀"
-                    ],
-                    robotics: [
-                        "Robotics is legit! 🤖 Building machines that can move and think? That's peak engineering right there! 🧠",
-                        "You into robotics? That's sick! 🤘 The hardware/software combo is where it's at! Microcontrollers are my jam! 🔧",
-                        "Dude, robot arms are the future! 🦾 Watching a 6-axis arm do precision work is pure satisfaction! 💯",
-                        "ROS (Robot Operating System) is game-changing! 🚀 Open-source robotics is taking over!",
-                        "Autonomous navigation tech is wild! 🌐 LIDAR, computer vision, SLAM... it's like sci-fi becoming real! 🛸"
-                    ],
-                    threeDprinting: [
-                        "3D printing is like having a mini factory on your desk! 🏭 CAD to physical part in hours? Revolutionary! ⚡",
-                        "Bro, PETG filament is where it's at! 💪 Strong, flexible, and prints like a dream. Perfect for functional parts!",
-                        "Have you tried resin printing? 🖨️ The detail is insane! SLA printers can make parts with 0.01mm layers! 🔬",
-                        "OctoPrint changed my life! 📡 Remote monitoring of prints from your phone is next level!",
-                        "Functional prototyping with 3D printing is a game changer! 🎮 Test, iterate, improve... rapid development FTW! 🚀"
-                    ],
-                    combatrobots: [
-                        "BattleBots is pure adrenaline! ⚡ Seeing 250lb robots throw each other across the arena? Epic! 💥",
-                        "Combat robotics engineering is next level! 🤯 Weapon systems, armor materials, drive trains... so much tech!",
-                        "Vertical spinners are my favorite design! 🌀 That kinetic energy transfer is brutal physics in action! ⚙️",
-                        "AR500 steel armor is the meta! 🛡️ Hardening techniques and impact analysis make or break a bot!",
-                        "The engineering in heavyweight combat robots is insane! 🧠 Teams are pushing material science and mechanics to the limit!"
-                    ],
-                    codmobile: [
-                        "CoD Mobile is fire! 🔥 Smooth 120fps gameplay on mobile? That's technical excellence right there! 📱",
-                        "Ranked MP in CoD Mobile takes skill! 🏅 Positioning, map control, aim... it's chess with guns! ♟️",
-                        "Battle Royale Alcatraz map is my go-to! 🗺️ Fast-paced action with constant engagements! No camping!",
-                        "The gunsmith system in CoD Mobile is deep! 🔫 Optimizing attachments for your playstyle is key to domination!",
-                        "SnD in CoD Mobile is tactical heaven! 🤫 One life, high stakes... clutch moments feel incredible! 💪"
-                    ],
-                    coding: [
-                        "Coding is ultimate power! 💻 You can build literally anything with enough lines and caffeine! ☕",
-                        "Clean code is maintainable code! 🧹 Readability over cleverness, bro. Future you will thank you! 🙏",
-                        "Version control with Git is non-negotiable! 📚 Commit often, branch smart, merge carefully!",
-                        "Learning a new framework is like unlocking superpowers! 🦸 React, Django, Unity... pick your tool and build!",
-                        "Debugging is where you level up! 🐛 Reading error logs and stack traces separates the pros from the amateurs!"
-                    ],
-                    technology: [
-                        "Tech moves fast! 🏎️ Staying updated is key to staying relevant in this game! 📈",
-                        "Open source is changing the world! 🌍 Collaboration beats competition any day! 👥",
-                        "Hardware hacking is underrated! 🔧 Understanding electronics unlocks so many projects! ⚡",
-                        "The maker movement is revolutionary! 🛠️ DIY tech projects are democratizing innovation!",
-                        "Cloud computing is the present and future! ☁️ Scalable, flexible, and powerful AF! 💪"
                     ],
                     default: [
                         "That's dope! Tell me more! 🤔",
@@ -1884,21 +1817,6 @@
                         "Don't worry about the complexity. The JSON structure makes it easy.",
                         "For education or hobbies, this is the perfect lightweight solution.",
                         "Just update the training data, and I'll handle the rest."
-                    ],
-                    robotics: [
-                        "For robotics education, I can explain PID loops or sensor fusion. Just load the robotics module! 🤖",
-                        "I'm perfect for onboarding new robotics team members. I can walk them through the safety protocols.",
-                        "Hobbyists love me because I remember their specific motor drivers and pinouts."
-                    ],
-                    threeDprinting: [
-                        "I can guide students through their first 3D print. Bed leveling, slicing, I know it all (if you teach me). 🖨️",
-                        "Use me to onboard staff on the new Prusa printers. I can store the maintenance schedules.",
-                        "For makers, I track filament usage and print settings per project."
-                    ],
-                    coding: [
-                        "I'm the ultimate coding companion. I can help onboard juniors to your codebase structure. 💻",
-                        "Use me in coding bootcamps to answer common syntax questions automatically.",
-                        "I can switch between Python tutor and C++ expert instantly."
                     ],
                     default: [
                         "With the right context, I can help with that.",
@@ -1991,7 +1909,7 @@
                     "Robot Wars (UK Classic)"
                 ]
             },
-            codmobile: {
+            gaming: {
                 gameModes: [
                     "Multiplayer (Ranked & Public)",
                     "Battle Royale (Isolated, Blackout)",
@@ -2014,6 +1932,13 @@
                     "Season 7-9: Championship",
                     "Current Season updates",
                     "World Championship Qualifiers"
+                ],
+                platforms: [
+                    "PC (Steam/Epic)",
+                    "PlayStation 5",
+                    "Xbox Series X",
+                    "Nintendo Switch",
+                    "Mobile (iOS/Android)"
                 ]
             },
             coding: {
@@ -2046,6 +1971,160 @@
                 ]
             }
         };
+
+        // License management system
+        const License = {
+            // Check current license tier
+            getTier: function() {
+                const license = localStorage.getItem('buddai_license');
+                if (!license) return 'free';
+                
+                try {
+                    const decoded = JSON.parse(atob(license));
+                    if (this.isValid(decoded)) {
+                        return decoded.tier; // 'pro' or 'whitelabel'
+                    }
+                } catch (e) {
+                    return 'free';
+                }
+                return 'free';
+            },
+            
+            // Validate license
+            isValid: function(license) {
+                // Check expiration
+                if (license.expires && new Date(license.expires) < new Date()) {
+                    return false;
+                }
+                
+                // Check signature (simple HMAC)
+                const expectedSig = this.generateSignature(license);
+                return license.signature === expectedSig;
+            },
+            
+            // Generate signature (client-side validation)
+            generateSignature: function(license) {
+                // Simple hash for client-side validation
+                // Server-side validation happens at purchase
+                const data = `${license.email}|${license.tier}|${license.expires}`;
+                return btoa(data); // In production, use proper HMAC
+            },
+            
+            // Activate license
+            activate: function(licenseKey) {
+                try {
+                    const license = JSON.parse(atob(licenseKey));
+                    if (this.isValid(license)) {
+                        localStorage.setItem('buddai_license', licenseKey);
+                        return true;
+                    }
+                } catch (e) {
+                    return false;
+                }
+                return false;
+            },
+            
+            // Check if specific feature is available
+            hasFeature: function(feature) {
+                const tier = this.getTier();
+                const features = {
+                    free: [
+                        'dual_personalities',
+                        'basic_voice',
+                        'projects_5',
+                        'export_txt'
+                    ],
+                    pro: [
+                        'unlimited_projects',
+                        'cloud_sync',
+                        'all_exports',
+                        'voice_packs',
+                        'dark_mode',
+                        'analytics',
+                        'remove_branding'
+                    ],
+                    whitelabel: [
+                        'custom_branding',
+                        'commercial_license',
+                        'api_access',
+                        'multi_bot',
+                        'team_seats',
+                        'custom_domain'
+                    ]
+                };
+                
+                // Pro includes all free features
+                // White-label includes all pro features
+                if (tier === 'pro') {
+                    return features.free.includes(feature) || 
+                           features.pro.includes(feature);
+                }
+                if (tier === 'whitelabel') {
+                    return features.free.includes(feature) || 
+                           features.pro.includes(feature) ||
+                           features.whitelabel.includes(feature);
+                }
+                return features.free.includes(feature);
+            }
+        };
+
+        function checkLicenseUI() {
+            const tier = License.getTier();
+            const badge = document.getElementById('proBadge');
+            if (!badge) return;
+            
+            if (tier === 'pro' || tier === 'whitelabel') {
+                badge.style.display = 'inline-block';
+                badge.textContent = tier === 'whitelabel' ? 'PARTNER' : 'PRO';
+                
+                if (tier === 'whitelabel') {
+                    badge.style.background = 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)';
+                } else {
+                    badge.style.background = 'linear-gradient(135deg, #f1c40f 0%, #f39c12 100%)';
+                }
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        // Voice Pack Management
+        const VoicePacks = {
+            free: {
+                fluffy: 'Google UK English Female',
+                coolboy: 'Google UK English Male',
+                business: 'Google US English Male'
+            },
+            pro: {
+                fluffy_premium: 'Google US English Female',
+                coolboy_premium: 'Google US English Male',
+                narrator: 'Microsoft David Desktop',
+                friendly: 'Microsoft Zira Desktop'
+            },
+            whitelabel: {
+                // Custom voices uploaded by user
+                // Stored in whitelabel config
+            }
+        };
+
+        function getWhiteLabelConfig() {
+            return userPreferences.whitelabelConfig || {};
+        }
+
+        function getAvailableVoices() {
+            const tier = License.getTier();
+            let available = {...VoicePacks.free};
+            
+            if (tier === 'pro' || tier === 'whitelabel') {
+                available = {...available, ...VoicePacks.pro};
+            }
+            
+            if (tier === 'whitelabel') {
+                const customVoices = getWhiteLabelConfig().voices || {};
+                available = {...available, ...customVoices};
+            }
+            
+            return available;
+        }
 
         // FIREBASE CONFIGURATION & SYNC
         // TODO: Replace with your project's config from Firebase Console
@@ -2796,7 +2875,8 @@
             // Update UI
             body.className = personality.style;
             botAvatar.textContent = personality.avatar;
-            botName.textContent = personality.name;
+            botName.innerHTML = `${personality.name} <span id="proBadge" class="pro-badge">PRO</span>`;
+            checkLicenseUI();
             botTagline.textContent = personality.tagline;
             userInput.placeholder = personality.placeholder;
             sendBtnIcon.textContent = personality.sendIcon;
@@ -2900,8 +2980,10 @@
             // Fallback to Web Speech API
             const utterance = new SpeechSynthesisUtterance(cleanText);
             if (voices.length > 0) {
-                const voiceName = currentMode === 'fluffy' ? 'Google UK English Female' : (currentMode === 'business' ? 'Google US English Male' : 'Google UK English Male');
-                const selectedVoice = voices.find(v => v.name === voiceName) || voices.find(v => v.name.includes(currentMode === 'fluffy' ? 'Female' : 'Male')) || voices[0];
+                const availableVoices = getAvailableVoices();
+                const targetVoice = availableVoices[currentMode] || (currentMode === 'fluffy' ? 'Google UK English Female' : 'Google UK English Male');
+                
+                const selectedVoice = voices.find(v => v.name === targetVoice) || voices.find(v => v.name.includes(currentMode === 'fluffy' ? 'Female' : 'Male')) || voices[0];
                 utterance.voice = selectedVoice;
             }
             speechSynthesis.speak(utterance);
@@ -3063,7 +3145,7 @@
                         robotics: "robotics",
                         threeDprinting: "3D printing",
                         combatrobots: "combat robots",
-                        codmobile: "CoD Mobile",
+                        gaming: "Gaming",
                         coding: "coding",
                         technology: "technology"
                     };
@@ -3296,6 +3378,173 @@
         // MAIN RESPONSE FUNCTION
         // ======================
 
+        // PALS (Personal AI Learners) Routing System
+        const PALS = {
+            'threeDprinting': {
+                keywords: ['printer', '3d', 'filament', 'marlin', 'sidewinder', 'cura', 'prusa', 'ender', 'resin', 'layer', 'infill'],
+                trainingData: {
+                    fluffy: [
+                        "3D printing is like modern-day magic! 🪄 You can create anything from a cute bunny to a functional robot part! 🐰",
+                        "I love how 3D printing makes ideas into reality! 🖨️ Have you tried printing with flexible filament? It's so fun! 🎀",
+                        "Watching a 3D printer work is like watching a robot create art! 🎨 Layer by layer, building dreams! ✨",
+                        "3D printing is perfect for making custom robot parts! 🤖 You can design anything your heart desires! 💖",
+                        "The best part of 3D printing? All the adorable little trinkets you can make! 🎁 So many possibilities!"
+                    ],
+                    coolboy: [
+                        "3D printing is like having a mini factory on your desk! 🏭 CAD to physical part in hours? Revolutionary! ⚡",
+                        "Bro, PETG filament is where it's at! 💪 Strong, flexible, and prints like a dream. Perfect for functional parts!",
+                        "Have you tried resin printing? 🖨️ The detail is insane! SLA printers can make parts with 0.01mm layers! 🔬",
+                        "OctoPrint changed my life! 📡 Remote monitoring of prints from your phone is next level!",
+                        "Functional prototyping with 3D printing is a game changer! 🎮 Test, iterate, improve... rapid development FTW! 🚀"
+                    ],
+                    business: [
+                        "I can guide students through their first 3D print. Bed leveling, slicing, I know it all (if you teach me). 🖨️",
+                        "Use me to onboard staff on the new Prusa printers. I can store the maintenance schedules.",
+                        "For makers, I track filament usage and print settings per project."
+                    ]
+                } 
+            },
+            'robotics': {
+                keywords: ['robot', 'gilbot', 'motor', 'sensor', 'ros', 'arduino', 'raspberry', 'pi', 'autonomous'],
+                trainingData: {
+                    fluffy: [
+                        "Ooh robotics! 🤖 I love watching robots dance and help people! Did you know some robots can paint like artists? 🎨",
+                        "Robotics is so magical! ✨ It's like building mechanical friends! Have you seen the Boston Dynamics robots dance? 🕺",
+                        "I think robots with soft, fluffy actuators would be adorable! 🐰 Imagine a cuddly robot assistant! 💕",
+                        "Robotics combines creativity with engineering in the most beautiful way! 🌟 Like magic made real!",
+                        "Watching robots learn and adapt always reminds me how we're creating new forms of life! 🌱 So exciting!"
+                    ],
+                    coolboy: [
+                        "Robotics is legit! 🤖 Building machines that can move and think? That's peak engineering right there! 🧠",
+                        "You into robotics? That's sick! 🤘 The hardware/software combo is where it's at! Microcontrollers are my jam! 🔧",
+                        "Dude, robot arms are the future! 🦾 Watching a 6-axis arm do precision work is pure satisfaction! 💯",
+                        "ROS (Robot Operating System) is game-changing! 🚀 Open-source robotics is taking over!",
+                        "Autonomous navigation tech is wild! 🌐 LIDAR, computer vision, SLAM... it's like sci-fi becoming real! 🛸"
+                    ],
+                    business: [
+                        "For robotics education, I can explain PID loops or sensor fusion. Just load the robotics module! 🤖",
+                        "I'm perfect for onboarding new robotics team members. I can walk them through the safety protocols.",
+                        "Hobbyists love me because I remember their specific motor drivers and pinouts."
+                    ]
+                }
+            },
+            'combatrobots': {
+                keywords: ['combat robot', 'battlebot', 'weapon', 'spinner', 'armor', 'arena', 'battle'],
+                trainingData: {
+                    fluffy: [
+                        "Combat robots are like modern gladiators! ⚔️ But they're also incredible engineering projects! 🔧 So fascinating!",
+                        "BattleBots is my guilty pleasure! 🤖 Seeing all that creativity and destruction is oddly satisfying! 💥",
+                        "The best combat robots have personality! 😄 Even when they're fighting, they're making engineering more fun!",
+                        "I love how combat robotics pushes innovation! 🚀 Teams have to be so creative with armor and weapons!",
+                        "Watching combat robots reminds me that even destruction can be beautiful engineering! ⚙️ So exciting!"
+                    ],
+                    coolboy: [
+                        "BattleBots is pure adrenaline! ⚡ Seeing 250lb robots throw each other across the arena? Epic! 💥",
+                        "Combat robotics engineering is next level! 🤯 Weapon systems, armor materials, drive trains... so much tech!",
+                        "Vertical spinners are my favorite design! 🌀 That kinetic energy transfer is brutal physics in action! ⚙️",
+                        "AR500 steel armor is the meta! 🛡️ Hardening techniques and impact analysis make or break a bot!",
+                        "The engineering in heavyweight combat robots is insane! 🧠 Teams are pushing material science and mechanics to the limit!"
+                    ]
+                }
+            },
+            'gaming': {
+                keywords: ['game', 'gaming', 'console', 'pc', 'playstation', 'xbox', 'nintendo', 'steam', 'cod mobile', 'codmobile', 'call of duty', 'battle royale', 'mp', 'ranked', 'gunsmith', 'sniper'],
+                trainingData: {
+                    fluffy: [
+                        "Gaming is so much fun! 🎮 I love exploring new worlds!",
+                        "Do you play on PC or console? 🕹️ Both are awesome!",
+                        "CoD Mobile is so much fun! 🎮 I love all the different game modes and how smooth it plays on mobile! 📱",
+                        "Battle Royale in CoD Mobile is epic! 🏆 So much strategy and action packed into one game! 💥",
+                        "The character skins in CoD Mobile are so cool! ✨ I love seeing all the creative designs! 🎨",
+                        "Multiplayer matches in CoD Mobile are my favorite quick gaming sessions! ⚡ Fast-paced and exciting!",
+                        "Watching pro CoD Mobile players is incredible! 🏅 Their reaction times are like superpowers! 🦸"
+                    ],
+                    coolboy: [
+                        "Gaming is life, bro. 🎮 What are you playing right now?",
+                        "PC Master Race or Console Peasant? Just kidding, all gaming is valid. 🕹️",
+                        "CoD Mobile is fire! 🔥 Smooth 120fps gameplay on mobile? That's technical excellence right there! 📱",
+                        "Ranked MP in CoD Mobile takes skill! 🏅 Positioning, map control, aim... it's chess with guns! ♟️",
+                        "Battle Royale Alcatraz map is my go-to! 🗺️ Fast-paced action with constant engagements! No camping!",
+                        "The gunsmith system in CoD Mobile is deep! 🔫 Optimizing attachments for your playstyle is key to domination!",
+                        "SnD in CoD Mobile is tactical heaven! 🤫 One life, high stakes... clutch moments feel incredible! 💪"
+                    ],
+                    business: [
+                         "The gaming industry is a massive market. 📈 Mobile gaming specifically is seeing exponential growth.",
+                         "Esports monetization models are fascinating. 💰 Sponsorships and media rights are key revenue streams.",
+                         "User retention in CoD Mobile is driven by the 'Games as a Service' model. 🔄 Constant content updates."
+                    ]
+                }
+            },
+            'coding': {
+                keywords: ['code', 'coding', 'programming', 'python', 'javascript', 'java', 'c++', 'html', 'css', 'git', 'debug', 'algorithm', 'buddai'],
+                trainingData: {
+                    fluffy: [
+                        "Coding is like weaving magic spells with logic! ✨ It's how we create entire digital worlds! 🌍",
+                        "I love how coding lets you solve puzzles and create amazing things! 🧩 It's like being a wizard! 🪄",
+                        "Every line of code is like adding a brushstroke to a digital painting! 🎨 So creative and logical!",
+                        "Coding lets us build our dreams! 🌟 Whether it's a game, app, or robot brain! 💻",
+                        "Debugging code is like being a detective! 🔍 Finding those little bugs and fixing them feels so good! 🐛"
+                    ],
+                    coolboy: [
+                        "Coding is ultimate power! 💻 You can build literally anything with enough lines and caffeine! ☕",
+                        "Clean code is maintainable code! 🧹 Readability over cleverness, bro. Future you will thank you! 🙏",
+                        "Version control with Git is non-negotiable! 📚 Commit often, branch smart, merge carefully!",
+                        "Learning a new framework is like unlocking superpowers! 🦸 React, Django, Unity... pick your tool and build!",
+                        "Debugging is where you level up! 🐛 Reading error logs and stack traces separates the pros from the amateurs!"
+                    ],
+                    business: [
+                        "I'm the ultimate coding companion. I can help onboard juniors to your codebase structure. 💻",
+                        "Use me in coding bootcamps to answer common syntax questions automatically.",
+                        "I can switch between Python tutor and C++ expert instantly."
+                    ]
+                }
+            },
+            'technology': {
+                keywords: ['tech', 'technology', 'hardware', 'software', 'computer', 'laptop', 'phone', 'gadget'],
+                trainingData: {
+                    fluffy: [
+                        "Technology is how we make dreams real! 🌟 From cute robot pets to amazing games! 🎮",
+                        "I love how technology connects us all! 🌐 Like a big digital hug for the whole world! 🤗",
+                        "Every new tech innovation feels like magic becoming real! ✨ So exciting to watch!",
+                        "Technology lets us create and share cuteness with everyone! 🐰 Isn't that wonderful?"
+                    ],
+                    coolboy: [
+                        "Tech moves fast! 🏎️ Staying updated is key to staying relevant in this game! 📈",
+                        "Open source is changing the world! 🌍 Collaboration beats competition any day! 👥",
+                        "Hardware hacking is underrated! 🔧 Understanding electronics unlocks so many projects! ⚡",
+                        "The maker movement is revolutionary! 🛠️ DIY tech projects are democratizing innovation!",
+                        "Cloud computing is the present and future! ☁️ Scalable, flexible, and powerful AF! 💪"
+                    ]
+                }
+            },
+            'education': {
+                keywords: ['education', 'teach', 'learn', 'student', 'school', 'curriculum'],
+                trainingData: {}
+            },
+            'onboarding': {
+                keywords: ['onboard', 'new hire', 'employee', 'training', 'orientation'],
+                trainingData: {}
+            },
+            'hobbyist': {
+                keywords: ['hobby', 'maker', 'diy', 'project', 'tinkering'],
+                trainingData: {}
+            },
+            'farewell': {
+                keywords: ['bye', 'goodbye', 'see you', 'later', 'thanks'],
+                trainingData: {}
+            }
+        };
+
+        function routeToPAL(input) {
+            const lowerInput = input.toLowerCase();
+            for (const [palName, pal] of Object.entries(PALS)) {
+                if (pal.keywords.some(kw => lowerInput.includes(kw))) {
+                    return palName;
+                }
+            }
+            return null;
+        }
+
         function getResponse(input) {
             const lower = input.toLowerCase();
             const personality = personalities[currentMode];
@@ -3351,24 +3600,12 @@
                 return projectResponse;
             }
             
-            // Check for technical topics
-            const topicMap = [
-                { pattern: /\b(robot|robotics|ros|arduino|raspberry|pi|motor|sensor|autonomous)\b/, topic: 'robotics' },
-                { pattern: /\b(3d.?print|filament|slicer|cura|prusa|ender|resin|layer|infill)/, topic: 'threeDprinting' },
-                { pattern: /\b(combat.?robot|battlebot|weapon|spinner|armor|arena|battle)\b/, topic: 'combatrobots' },
-                { pattern: /\b(cod.?mobile|call.?of.?duty|battle.?royale|mp|ranked|gunsmith|snipers)\b/, topic: 'codmobile' },
-                { pattern: /\b(code|coding|programming|python|javascript|java|c\+\+|html|css|git|debug|algorithm)\b/, topic: 'coding' },
-                { pattern: /\b(tech|technology|hardware|software|computer|laptop|phone|gadget)\b/, topic: 'technology' }
-            ];
-
-            let detectedTopic = null;
-            for (const mapping of topicMap) {
-                if (mapping.pattern.test(lower)) {
-                    detectedTopic = mapping.topic;
-                    currentTopic = detectedTopic;
-                    break;
-                }
+            // Check for technical topics using PALS routing
+            const detectedTopic = routeToPAL(lower);
+            if (detectedTopic) {
+                currentTopic = detectedTopic;
             }
+
 
             if (detectedTopic) {
                 trackUserInterests(input, detectedTopic);
@@ -3414,11 +3651,13 @@
 
             // Get base response
             let response;
-            if (detectedTopic) {
-                const topicResponses = responses[detectedTopic];
-                response = topicResponses[Math.floor(Math.random() * topicResponses.length)];
-                response = getLeveledResponse(detectedTopic, response);
-                
+            if (detectedTopic && PALS[detectedTopic] && PALS[detectedTopic].trainingData[currentMode]) {
+                const topicResponses = PALS[detectedTopic].trainingData[currentMode];
+                // Fallback if specific mode has no data for this topic
+                if (topicResponses && topicResponses.length > 0) {
+                    response = topicResponses[Math.floor(Math.random() * topicResponses.length)];
+                    response = getLeveledResponse(detectedTopic, response);
+                }
             } else {
                 // Basic responses
                 if (lower.match(/\b(hi|hello|hey|hola|greetings)\b/)) {
@@ -3544,7 +3783,7 @@
                         robotics: "🤖 Robotics",
                         threeDprinting: "🖨️ 3D Printing",
                         combatrobots: "⚔️ Combat Robots",
-                        codmobile: "🎮 CoD Mobile",
+                        gaming: "🎮 Gaming",
                         coding: "💻 Coding",
                         technology: "⚡ Technology"
                     };
@@ -3697,13 +3936,12 @@
                         progress: 0
                     };
                     
-                    userPreferences.activeProjects.push(newProject);
-                    updateProjectModal();
-                    updateProjectBadge();
-                    savePreferences();
-                    
-                    showStatus(`🎯 Added "${suggestion.title}" to your projects!`);
-                    hideProjectModal();
+                    if (addProject(newProject)) {
+                        updateProjectModal();
+                        updateProjectBadge();
+                        showStatus(`🎯 Added "${suggestion.title}" to your projects!`);
+                        hideProjectModal();
+                    }
                 });
                 
                 suggestionList.appendChild(div);
@@ -3777,7 +4015,48 @@
             projectModal.style.display = 'none';
         }
 
+        function showUpgradePrompt(type, details) {
+            if (confirm(`${details.message}\n\n${details.cta}`)) {
+                if (details.upgradeUrl) {
+                    window.open(details.upgradeUrl, '_blank');
+                }
+            }
+        }
+
+        function addProject(project) {
+            const tier = License.getTier();
+            const currentProjects = userPreferences.activeProjects.length;
+            
+            // Free tier: 5 project limit
+            if (tier === 'free' && currentProjects >= 5) {
+                showUpgradePrompt('project_limit', {
+                    message: "You've reached the limit of 5 projects on the free tier.",
+                    feature: "Unlimited Projects",
+                    cta: "Upgrade to Pro for unlimited projects - just $9/mo\nClick OK to upgrade.",
+                    upgradeUrl: "https://buy.stripe.com/your-pro-link"
+                });
+                return false;
+            }
+            
+            // Pro & White-label: unlimited
+            userPreferences.activeProjects.push(project);
+            savePreferences();
+            return true;
+        }
+
         function addNewProject() {
+            // Check limit before prompting
+            const tier = License.getTier();
+            if (tier === 'free' && userPreferences.activeProjects.length >= 5) {
+                showUpgradePrompt('project_limit', {
+                    message: "You've reached the limit of 5 projects on the free tier.",
+                    feature: "Unlimited Projects",
+                    cta: "Upgrade to Pro for unlimited projects - just $9/mo\nClick OK to upgrade.",
+                    upgradeUrl: "https://buy.stripe.com/your-pro-link"
+                });
+                return;
+            }
+
             const projectName = prompt("What's your new project called?");
             if (!projectName) return;
             
@@ -3796,21 +4075,20 @@
                 progress: 0
             };
             
-            userPreferences.activeProjects.push(newProject);
-            updateProjectModal();
-            updateProjectBadge();
-            savePreferences();
-            
-            showStatus(`✅ Added "${projectName}" to your projects!`);
-            
-            addMessage(
-                currentMode === 'fluffy'
-                    ? `Yay! New project "${projectName}" added! 🎀 Can't wait to hear about your progress! 💖`
-                    : (currentMode === 'business'
-                        ? `Initiative "${projectName}" greenlit. 🟢 Execute phase 1.`
-                        : `Project "${projectName}" added! 🔥 Let's make it happen! 🚀`),
-                false
-            );
+            if (addProject(newProject)) {
+                updateProjectModal();
+                updateProjectBadge();
+                showStatus(`✅ Added "${projectName}" to your projects!`);
+                
+                addMessage(
+                    currentMode === 'fluffy'
+                        ? `Yay! New project "${projectName}" added! 🎀 Can't wait to hear about your progress! 💖`
+                        : (currentMode === 'business'
+                            ? `Initiative "${projectName}" greenlit. 🟢 Execute phase 1.`
+                            : `Project "${projectName}" added! 🔥 Let's make it happen! 🚀`),
+                    false
+                );
+            }
         }
 
         function generateProjectIdeas() {
@@ -4017,12 +4295,12 @@
                     project.name = project.name + " (Imported)";
                     project.importedFrom = shareId;
                     
-                    userPreferences.activeProjects.push(project);
-                    savePreferences();
-                    updateProjectModal();
-                    updateProjectBadge();
-                    showStatus(`📥 Imported "${project.name}"!`);
-                    addMessage(`I see you imported a new project: ${project.name}! 🌟 That looks exciting!`, false);
+                    if (addProject(project)) {
+                        updateProjectModal();
+                        updateProjectBadge();
+                        showStatus(`📥 Imported "${project.name}"!`);
+                        addMessage(`I see you imported a new project: ${project.name}! 🌟 That looks exciting!`, false);
+                    }
                 } else {
                     alert("❌ Project not found! Check the ID.");
                 }
@@ -4121,7 +4399,25 @@
             }
         }
 
+        function showUpgradePrompt(type, details) {
+            if (confirm(`${details.message}\n\n${details.cta}`)) {
+                if (details.upgradeUrl) {
+                    window.open(details.upgradeUrl, '_blank');
+                }
+            }
+        }
+
         function exportJSON() {
+            if (!License.hasFeature('all_exports')) {
+                showUpgradePrompt('export_json', {
+                    message: "JSON export is a Pro feature.",
+                    feature: "All Export Formats",
+                    cta: "Upgrade to Pro to export in JSON, HTML, and Markdown\nClick OK to upgrade.",
+                    upgradeUrl: "https://buy.stripe.com/your-pro-link"
+                });
+                return;
+            }
+
             const data = {
                 mode: currentMode,
                 personality: personalities[currentMode].name,
@@ -4175,6 +4471,16 @@
         }
 
         function exportHTML() {
+            if (!License.hasFeature('all_exports')) {
+                showUpgradePrompt('export_html', {
+                    message: "HTML export is a Pro feature.",
+                    feature: "All Export Formats",
+                    cta: "Upgrade to Pro to export in JSON, HTML, and Markdown\nClick OK to upgrade.",
+                    upgradeUrl: "https://buy.stripe.com/your-pro-link"
+                });
+                return;
+            }
+
             let htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4252,6 +4558,16 @@
         }
 
         function exportMarkdown() {
+            if (!License.hasFeature('all_exports')) {
+                showUpgradePrompt('export_md', {
+                    message: "Markdown export is a Pro feature.",
+                    feature: "All Export Formats",
+                    cta: "Upgrade to Pro to export in JSON, HTML, and Markdown\nClick OK to upgrade.",
+                    upgradeUrl: "https://buy.stripe.com/your-pro-link"
+                });
+                return;
+            }
+
             let mdContent = `# Chat with ${personalities[currentMode].name}\n\n`;
             mdContent += `**Date:** ${new Date().toLocaleString()}\n`;
             mdContent += `**Messages:** ${messageCount}\n`;
@@ -4373,6 +4689,7 @@
 
         // Load preferences
         loadPreferences();
+        checkLicenseUI();
 
         // Set up skill buttons
         document.querySelectorAll('.skill-btn').forEach(btn => {
