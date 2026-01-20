@@ -160,6 +160,77 @@
             box-shadow: 0 3px 10px rgba(240, 147, 251, 0.5);
         }
 
+        /* BUSINESS MODE STYLES */
+        .mode-business {
+            background: transparent;
+            color: white;
+        }
+
+        body.business-mode {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        .business-mode .container {
+            border: 5px solid #f1c40f;
+            box-shadow: 0 20px 60px rgba(241, 196, 15, 0.2);
+        }
+
+        .business-mode .header {
+            background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
+        }
+
+        .business-mode .mode-boy,
+        .business-mode .mode-girl {
+            background: transparent;
+            box-shadow: none;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .business-mode .mode-business {
+            background: white;
+            color: #d35400;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .business-mode .chat-area {
+            background: #fffaf0;
+        }
+
+        .business-mode .message.bot .message-bubble {
+            background: linear-gradient(135deg, #ffffff 0%, #fdfefe 100%);
+            color: #2c3e50;
+            border: 2px solid #f1c40f;
+        }
+
+        .business-mode .message.user .message-bubble {
+            background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%);
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.3);
+        }
+
+        .business-mode #sendBtn,
+        .business-mode #voiceToggle {
+            background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%);
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        .business-mode .project-badge {
+            background: rgba(243, 156, 18, 0.9);
+        }
+        
+        .business-mode .stats-panel {
+            background: #fffaf0;
+            border-top: 3px solid #f1c40f;
+            color: #d35400;
+        }
+
+        .business-mode .export-btn.primary {
+            background: #f39c12;
+        }
+        
+        .business-mode .export-btn.primary:hover {
+            background: #e67e22;
+        }
+
         /* PREFERENCE INDICATOR */
         .preference-indicator {
             position: absolute;
@@ -1472,6 +1543,7 @@
             <button class="mode-switcher" id="modeSwitcher" type="button" aria-label="Switch Mode">
                 <span class="mode-option mode-boy">🤖 COOL BOY</span>
                 <span class="mode-option mode-girl">🐰 FLUFFY BOT</span>
+                <span class="mode-option mode-business">🏗️ ARCHITECT</span>
             </button>
             
             <div class="bot-avatar" id="botAvatar">🐰</div>
