@@ -1774,6 +1774,11 @@
                 </div>
             </div>
             
+            <div class="preference-section" style="margin-top: 20px; border-top: 1px dashed #bdc3c7; padding-top: 20px;">
+                <h4>🛠️ Developer Tools</h4>
+                <button class="project-btn secondary" style="width: 100%;" type="button" onclick="runDiagnostics(true)">🧪 Run Logic Diagnostics</button>
+            </div>
+            
             <button class="reset-btn" type="button" onclick="resetPreferences()">Reset Learning Data</button>
         </div>
     </div>
@@ -4967,7 +4972,7 @@
         // ======================
         // DIAGNOSTICS
         // ======================
-        async function runDiagnostics() {
+        async function runDiagnostics(toChat = false) {
             console.clear();
             console.log("%c🤖 BuddAI Logic Diagnostics", "font-size: 20px; font-weight: bold; color: #3498db;");
             
@@ -4997,6 +5002,10 @@
                     expected: "Should route to 'buddai' PAL with business tone."
                 }
             ];
+            
+            if (toChat) {
+                addMessage("🤖 <b>Running Diagnostics Suite...</b>", false);
+            }
 
             for (const scenario of scenarios) {
                 console.group(`%c🧪 Test: ${scenario.name}`, "color: #e67e22");
@@ -5018,11 +5027,19 @@
                 console.log(`%cℹ️ Expectation: ${scenario.expected}`, "color: #7f8c8d; font-style: italic");
                 console.groupEnd();
                 
+                if (toChat) {
+                    const statusIcon = response ? "✅" : "❌";
+                    addMessage(`<b>${statusIcon} Test: ${scenario.name}</b><br>Input: "<i>${scenario.input}</i>"<br>Response: "${cleanResponse}"`, false);
+                }
+                
                 // Brief pause between tests
                 await new Promise(r => setTimeout(r, 800)); 
             }
             
             console.log("%c✅ Diagnostics Complete", "font-size: 16px; color: #3498db");
+            if (toChat) {
+                addMessage("🏁 <b>Diagnostics Complete.</b> All systems nominal.", false);
+            }
         }
 
         // ======================
