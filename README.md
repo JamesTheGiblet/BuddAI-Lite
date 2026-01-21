@@ -1,12 +1,12 @@
-# Fluffy Bot / Cool Boy 🎭 (BuddAI Lite)
+# BuddAI Lite (Fluffy Bot / Cool Boy / Architect) 🎭
 
-> A lightweight demonstration of BuddAI's dual-personality chat interface
+> A lightweight demonstration of BuddAI's multi-personality chat interface
 
 ## Project-Aware Tech Chat Assistant
 
-> A dual-personality chatbot that learns your interests, tracks your projects, and adapts to your expertise level - all while keeping your data private and costing nothing to run.
+> A multi-personality chatbot that learns your interests, tracks your projects, and adapts to your expertise level - all while keeping your data private and costing nothing to run.
 
-![Version](https://img.shields.io/badge/version-2.1-blue)
+![Version](https://img.shields.io/badge/version-2.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Build Time](https://img.shields.io/badge/build%20time-2%20hours-orange)
 ![GitHub stars](https://img.shields.io/github/stars/jamesthegiblet/BuddAI-Lite?style=social)
@@ -24,11 +24,18 @@
 
 ## 🌟 Features
 
-### 🤖 Dual Personality System
+### 🤖 Multi-Personality System
 
 - **Fluffy Bot** 🐰 - Your cuddly AI companion! Supportive, emoji-rich, enthusiastic
 - **Cool Boy** 🤖 - Your tech-savvy AI bro! Casual, technical, practical
+- **Architect** 🏗️ - The professional business mode! Focused on education, onboarding, and project management
 - Switch between modes on-the-fly while maintaining conversation context
+
+### 🧩 PALS (Personal AI Learners) System
+
+- **Topic Bubbles** - Quick-select chips to jump straight into specific domains
+- **Smart Routing** - Keyword-based routing system to direct queries to the right knowledge base
+- **Context Locking** - Keeps the conversation focused on the current topic or project
 
 ### 🧠 Learning & Memory
 
@@ -67,8 +74,13 @@
 - **Modal interfaces** - Preference dashboard and project management
 - **Visual indicators** - Learning status, active projects, progress bars
 
-### 🚀 New in v2.1
+### 🚀 New in v2.2
 
+- **Architect Mode** - A third personality for professional contexts
+- **PALS Interface** - Scrollable topic bubbles for quick navigation
+- **Embedded Data** - No external JSON file needed for basic operation (fixes CORS issues)
+- **Context Awareness** - Improved sticky context for projects
+- **License UI** - Demonstration of Pro/Whitelabel feature gating
 - **Cloud Sync** - Firebase integration for cross-device synchronization
 - **Collaboration** - Share projects with other users via ID
 - **Advanced Analytics** - Visual dashboard for chat stats and topic heatmaps
@@ -100,8 +112,7 @@ cd BuddAI-Lite
 
 ```txt
 📁 BuddAI-lite/
-  ├── 📄 chatbot.html
-  └── 📄 training-data.json
+  └── 📄 index.html
 ```
 
 1. **Open in browser:**

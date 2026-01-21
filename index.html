@@ -4965,6 +4965,67 @@
         }
 
         // ======================
+        // DIAGNOSTICS
+        // ======================
+        async function runDiagnostics() {
+            console.clear();
+            console.log("%c🤖 BuddAI Logic Diagnostics", "font-size: 20px; font-weight: bold; color: #3498db;");
+            
+            const scenarios = [
+                { 
+                    name: "Specific Entity (Custom Data)", 
+                    input: "Tell me about GilBot", 
+                    mode: "fluffy",
+                    expected: "Should find 'gilbot' in customResponses."
+                },
+                { 
+                    name: "General Topic (PALS Routing)", 
+                    input: "I love 3D printing", 
+                    mode: "fluffy",
+                    expected: "Should route to 'threeDprinting' PAL."
+                },
+                { 
+                    name: "Project Creation", 
+                    input: "I am building a new robot called Destructo", 
+                    mode: "coolboy",
+                    expected: "Should detect project 'Destructo' and save it."
+                },
+                { 
+                    name: "Business Persona (Architect)", 
+                    input: "What is the value proposition of BuddAI?", 
+                    mode: "business",
+                    expected: "Should route to 'buddai' PAL with business tone."
+                }
+            ];
+
+            for (const scenario of scenarios) {
+                console.group(`%c🧪 Test: ${scenario.name}`, "color: #e67e22");
+                
+                // Switch mode if needed
+                if (currentMode !== scenario.mode) {
+                    switchMode(scenario.mode);
+                    console.log(`%c[System] Switched to ${scenario.mode} mode`, "color: #95a5a6");
+                }
+
+                console.log(`%c[User] "${scenario.input}"`, "font-weight: bold");
+                
+                // Get response
+                const response = getResponse(scenario.input);
+                
+                // Log result (stripping HTML tags for readability)
+                const cleanResponse = response ? response.replace(/<[^>]*>/g, '') : "No response";
+                console.log(`%c[Bot] "${cleanResponse}"`, "color: #2ecc71");
+                console.log(`%cℹ️ Expectation: ${scenario.expected}`, "color: #7f8c8d; font-style: italic");
+                console.groupEnd();
+                
+                // Brief pause between tests
+                await new Promise(r => setTimeout(r, 800)); 
+            }
+            
+            console.log("%c✅ Diagnostics Complete", "font-size: 16px; color: #3498db");
+        }
+
+        // ======================
         // INITIALIZATION
         // ======================
 
